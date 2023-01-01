@@ -1,0 +1,266 @@
+{
+    "os": "Linux-5.4.0-135-generic-x86_64-with-glibc2.31",
+    "python": "3.9.15",
+    "heartbeatAt": "2022-12-18T05:45:18.465197",
+    "startedAt": "2022-12-18T05:45:17.834922",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--dataset",
+        "cifar100",
+        "--epoch",
+        "500",
+        "--bs",
+        "256",
+        "--head_size1",
+        "4096",
+        "--head_size2",
+        "2048",
+        "--factor",
+        "0.5",
+        "--wandb",
+        "my-experiment"
+    ],
+    "state": "running",
+    "program": "/home/sungwoopark/dl-experiment/main.py",
+    "codePath": "main.py",
+    "host": "ubuntu",
+    "username": "sungwoopark",
+    "executable": "/home/sungwoopark/anaconda3/envs/main/bin/python3",
+    "cpu_count": 20,
+    "cpu_count_logical": 40,
+    "cpu_freq": {
+        "current": 2255.293649999999,
+        "min": 1000.0,
+        "max": 3200.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2472.482,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2809.849,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2379.286,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2992.532,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1343.268,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1222.573,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1793.897,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2325.085,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2899.63,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1440.687,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2449.005,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2680.937,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1500.273,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2604.491,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1538.892,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2068.164,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2677.647,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2156.377,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2188.722,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2740.402,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2140.728,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2274.218,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2430.061,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2895.073,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2256.252,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1388.511,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2010.774,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2312.955,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2990.061,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1497.919,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2243.426,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2819.922,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1500.046,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2712.556,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1531.132,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2201.188,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2450.777,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2364.595,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2150.351,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2371.255,
+            "min": 1000.0,
+            "max": 3200.0
+        }
+    ],
+    "disk": {
+        "total": 405.5688018798828,
+        "used": 353.5706367492676
+    },
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25447170048
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25447170048
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25447170048
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25447170048
+        }
+    ],
+    "memory": {
+        "total": 187.58544921875
+    }
+}

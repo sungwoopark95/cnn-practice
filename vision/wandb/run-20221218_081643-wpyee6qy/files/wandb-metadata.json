@@ -1,0 +1,266 @@
+{
+    "os": "Linux-5.4.0-135-generic-x86_64-with-glibc2.31",
+    "python": "3.9.15",
+    "heartbeatAt": "2022-12-18T08:16:44.149654",
+    "startedAt": "2022-12-18T08:16:43.516761",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--dataset",
+        "cifar100",
+        "--epoch",
+        "500",
+        "--bs",
+        "256",
+        "--head_size1",
+        "4096",
+        "--head_size2",
+        "1000",
+        "--factor",
+        "0.5",
+        "--wandb",
+        "my-experiment"
+    ],
+    "state": "running",
+    "program": "/home/sungwoopark/dl-experiment/main.py",
+    "codePath": "main.py",
+    "host": "ubuntu",
+    "username": "sungwoopark",
+    "executable": "/home/sungwoopark/anaconda3/envs/main/bin/python3",
+    "cpu_count": 20,
+    "cpu_count_logical": 40,
+    "cpu_freq": {
+        "current": 2195.6297999999997,
+        "min": 1000.0,
+        "max": 3200.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2843.198,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2875.261,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2237.594,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1174.996,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1699.949,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1317.957,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2506.274,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2891.94,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1509.975,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2766.553,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1194.488,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2457.098,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2829.099,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2844.103,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2901.901,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2517.385,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1853.502,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1616.615,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1487.828,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2188.002,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2501.255,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2849.052,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2798.534,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1686.832,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1700.686,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1315.648,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2763.665,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2579.288,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1430.188,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2746.995,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1396.513,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2514.959,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2770.976,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2622.957,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2899.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1994.63,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2303.305,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1761.435,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 1440.954,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2770.509,
+            "min": 1000.0,
+            "max": 3200.0
+        }
+    ],
+    "disk": {
+        "total": 405.5688018798828,
+        "used": 353.57064056396484
+    },
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25447170048
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25447170048
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25447170048
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25447170048
+        }
+    ],
+    "memory": {
+        "total": 187.58544921875
+    }
+}

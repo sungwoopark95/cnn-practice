@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/sungwoopark/dl-experiment/main.py", line 52, in <module>
+    model = ConvNet().to(DEVICE)
+  File "/home/sungwoopark/dl-experiment/model.py", line 90, in __init__
+    self.fc_bn1 = nn.BatchNorm1d(cfg.head_size)
+AttributeError: 'Namespace' object has no attribute 'head_size'

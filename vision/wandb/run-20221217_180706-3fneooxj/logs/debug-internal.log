@@ -1,0 +1,458 @@
+2022-12-17 18:07:06,134 INFO    StreamThr :2577779 [internal.py:wandb_internal():88] W&B internal server running at pid: 2577779, started at: 2022-12-17 18:07:06.133891
+2022-12-17 18:07:06,140 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: status
+2022-12-17 18:07:06,140 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: status
+2022-12-17 18:07:06,143 INFO    WriterThread:2577779 [datastore.py:open_for_write():75] open: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/run-3fneooxj.wandb
+2022-12-17 18:07:06,143 DEBUG   SenderThread:2577779 [sender.py:send():303] send: header
+2022-12-17 18:07:06,143 DEBUG   SenderThread:2577779 [sender.py:send():303] send: run
+2022-12-17 18:07:08,270 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: check_version
+2022-12-17 18:07:08,297 INFO    SenderThread:2577779 [dir_watcher.py:__init__():216] watching files in: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files
+2022-12-17 18:07:08,298 INFO    SenderThread:2577779 [sender.py:_start_run_threads():928] run started: 3fneooxj with start time 1671300426.126181
+2022-12-17 18:07:08,298 DEBUG   SenderThread:2577779 [sender.py:send():303] send: summary
+2022-12-17 18:07:08,298 INFO    SenderThread:2577779 [sender.py:_save_file():1171] saving file wandb-summary.json with policy end
+2022-12-17 18:07:08,298 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: check_version
+2022-12-17 18:07:08,383 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: run_start
+2022-12-17 18:07:08,388 DEBUG   HandlerThread:2577779 [system_info.py:__init__():31] System info init
+2022-12-17 18:07:08,388 DEBUG   HandlerThread:2577779 [system_info.py:__init__():46] System info init done
+2022-12-17 18:07:08,388 INFO    HandlerThread:2577779 [system_monitor.py:start():150] Starting system monitor
+2022-12-17 18:07:08,392 INFO    SystemMonitor:2577779 [system_monitor.py:_start():116] Starting system asset monitoring threads
+2022-12-17 18:07:08,392 INFO    HandlerThread:2577779 [system_monitor.py:probe():168] Collecting system info
+2022-12-17 18:07:08,393 INFO    SystemMonitor:2577779 [interfaces.py:start():168] Started cpu
+2022-12-17 18:07:08,393 INFO    SystemMonitor:2577779 [interfaces.py:start():168] Started disk
+2022-12-17 18:07:08,394 INFO    SystemMonitor:2577779 [interfaces.py:start():168] Started gpu
+2022-12-17 18:07:08,395 INFO    SystemMonitor:2577779 [interfaces.py:start():168] Started memory
+2022-12-17 18:07:08,397 INFO    SystemMonitor:2577779 [interfaces.py:start():168] Started network
+2022-12-17 18:07:08,436 DEBUG   HandlerThread:2577779 [system_info.py:probe():195] Probing system
+2022-12-17 18:07:08,451 DEBUG   HandlerThread:2577779 [git.py:repo():40] git repository is invalid
+2022-12-17 18:07:08,452 DEBUG   HandlerThread:2577779 [system_info.py:probe():241] Probing system done
+2022-12-17 18:07:08,452 DEBUG   HandlerThread:2577779 [system_monitor.py:probe():177] {'os': 'Linux-5.4.0-135-generic-x86_64-with-glibc2.31', 'python': '3.9.15', 'heartbeatAt': '2022-12-17T18:07:08.436421', 'startedAt': '2022-12-17T18:07:06.116045', 'docker': None, 'cuda': None, 'args': ('--dataset', 'cifar100', '--epoch', '500', '--bs', '256', '--head_size', '512', '--wandb', 'my-experiment'), 'state': 'running', 'program': '/home/sungwoopark/dl-experiment/main.py', 'codePath': 'main.py', 'host': 'ubuntu', 'username': 'sungwoopark', 'executable': '/home/sungwoopark/anaconda3/envs/main/bin/python3', 'cpu_count': 20, 'cpu_count_logical': 40, 'cpu_freq': {'current': 2673.1381, 'min': 1000.0, 'max': 3200.0}, 'cpu_freq_per_core': [{'current': 2900.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2899.995, 'min': 1000.0, 'max': 3200.0}, {'current': 2363.301, 'min': 1000.0, 'max': 3200.0}, {'current': 2899.999, 'min': 1000.0, 'max': 3200.0}, {'current': 2731.478, 'min': 1000.0, 'max': 3200.0}, {'current': 2899.999, 'min': 1000.0, 'max': 3200.0}, {'current': 2718.608, 'min': 1000.0, 'max': 3200.0}, {'current': 2710.364, 'min': 1000.0, 'max': 3200.0}, {'current': 2899.999, 'min': 1000.0, 'max': 3200.0}, {'current': 2466.711, 'min': 1000.0, 'max': 3200.0}, {'current': 2900.001, 'min': 1000.0, 'max': 3200.0}, {'current': 2711.411, 'min': 1000.0, 'max': 3200.0}, {'current': 2844.76, 'min': 1000.0, 'max': 3200.0}, {'current': 2459.299, 'min': 1000.0, 'max': 3200.0}, {'current': 2710.054, 'min': 1000.0, 'max': 3200.0}, {'current': 2702.859, 'min': 1000.0, 'max': 3200.0}, {'current': 2569.756, 'min': 1000.0, 'max': 3200.0}, {'current': 2537.945, 'min': 1000.0, 'max': 3200.0}, {'current': 2899.999, 'min': 1000.0, 'max': 3200.0}, {'current': 2699.933, 'min': 1000.0, 'max': 3200.0}, {'current': 2900.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2900.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2384.884, 'min': 1000.0, 'max': 3200.0}, {'current': 2899.999, 'min': 1000.0, 'max': 3200.0}, {'current': 2730.608, 'min': 1000.0, 'max': 3200.0}, {'current': 2900.0, 'min': 1000.0, 'max': 3200.0}, {'current': 2717.231, 'min': 1000.0, 'max': 3200.0}, {'current': 2682.307, 'min': 1000.0, 'max': 3200.0}, {'current': 2899.998, 'min': 1000.0, 'max': 3200.0}, {'current': 2476.61, 'min': 1000.0, 'max': 3200.0}, {'current': 2899.999, 'min': 1000.0, 'max': 3200.0}, {'current': 2712.358, 'min': 1000.0, 'max': 3200.0}, {'current': 2838.376, 'min': 1000.0, 'max': 3200.0}, {'current': 2505.843, 'min': 1000.0, 'max': 3200.0}, {'current': 2713.41, 'min': 1000.0, 'max': 3200.0}, {'current': 2694.314, 'min': 1000.0, 'max': 3200.0}, {'current': 2610.923, 'min': 1000.0, 'max': 3200.0}, {'current': 2351.133, 'min': 1000.0, 'max': 3200.0}, {'current': 2900.002, 'min': 1000.0, 'max': 3200.0}, {'current': 2688.093, 'min': 1000.0, 'max': 3200.0}], 'disk': {'total': 405.5688018798828, 'used': 353.5731315612793}, 'gpu': 'NVIDIA GeForce RTX 3090', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25447170048}, {'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25447170048}, {'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25447170048}, {'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25447170048}], 'memory': {'total': 187.58544921875}}
+2022-12-17 18:07:08,452 INFO    HandlerThread:2577779 [system_monitor.py:probe():178] Finished collecting system info
+2022-12-17 18:07:08,452 INFO    HandlerThread:2577779 [system_monitor.py:probe():181] Publishing system info
+2022-12-17 18:07:08,452 DEBUG   HandlerThread:2577779 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2022-12-17 18:07:08,453 DEBUG   HandlerThread:2577779 [system_info.py:_save_pip():67] Saving pip packages done
+2022-12-17 18:07:08,453 DEBUG   HandlerThread:2577779 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2022-12-17 18:07:09,291 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_created():275] file/dir created: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/requirements.txt
+2022-12-17 18:07:09,292 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_created():275] file/dir created: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/conda-environment.yaml
+2022-12-17 18:07:09,292 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_created():275] file/dir created: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/wandb-summary.json
+2022-12-17 18:07:11,690 DEBUG   HandlerThread:2577779 [system_info.py:_save_conda():86] Saving conda packages done
+2022-12-17 18:07:11,691 INFO    HandlerThread:2577779 [system_monitor.py:probe():183] Finished publishing system info
+2022-12-17 18:07:11,695 DEBUG   SenderThread:2577779 [sender.py:send():303] send: files
+2022-12-17 18:07:11,696 INFO    SenderThread:2577779 [sender.py:_save_file():1171] saving file wandb-metadata.json with policy now
+2022-12-17 18:07:11,704 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:07:11,704 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:07:11,921 DEBUG   SenderThread:2577779 [sender.py:send():303] send: telemetry
+2022-12-17 18:07:12,291 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/conda-environment.yaml
+2022-12-17 18:07:12,291 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_created():275] file/dir created: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/wandb-metadata.json
+2022-12-17 18:07:12,387 INFO    Thread-16 :2577779 [upload_job.py:push():143] Uploaded file /tmp/tmp7mrn6ypvwandb/1x6i5fmm-wandb-metadata.json
+2022-12-17 18:07:15,292 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_created():275] file/dir created: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:17,293 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:19,294 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:25,297 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:26,923 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:07:26,923 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:07:27,298 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:31,300 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:33,301 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:35,301 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:37,303 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/config.yaml
+2022-12-17 18:07:39,303 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:41,305 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:42,220 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:07:42,220 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:07:43,306 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:47,308 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:49,309 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:51,310 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:55,311 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:57,312 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:07:57,442 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:07:57,443 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:08:07,316 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:08,397 DEBUG   SystemMonitor:2577779 [system_monitor.py:_start():130] Starting system metrics aggregation loop
+2022-12-17 18:08:08,399 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:08:09,317 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:13,319 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:15,320 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:17,321 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:17,444 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:08:17,444 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:08:21,323 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:23,325 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:25,326 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:29,327 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:31,328 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:32,668 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:08:32,668 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:08:33,329 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:35,330 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:38,400 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:08:39,333 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:41,334 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:43,335 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:47,337 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:47,902 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:08:47,902 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:08:49,338 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:51,339 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:55,341 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:57,342 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:08:59,343 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:03,173 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:09:03,173 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:09:03,345 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:05,346 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:07,346 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:08,403 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:09:09,347 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:13,349 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:15,350 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:17,351 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:18,402 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:09:18,402 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:09:21,353 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:23,354 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:25,355 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:29,356 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:31,358 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:33,358 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:33,626 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:09:33,626 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:09:35,360 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:38,405 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:09:39,361 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:41,363 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:43,364 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:47,366 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:48,863 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:09:48,864 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:09:49,367 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:51,368 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:55,369 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:57,371 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:09:59,371 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:03,373 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:04,678 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:10:04,679 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:10:05,374 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:07,375 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:08,407 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:10:11,377 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:13,378 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:15,379 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:19,381 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:19,907 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:10:19,907 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:10:21,382 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:23,383 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:25,384 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:29,386 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:31,387 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:33,388 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:35,137 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:10:35,137 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:10:37,390 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:38,408 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:10:39,391 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:41,391 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:45,393 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:47,394 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:49,395 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:50,362 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:10:50,363 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:10:53,397 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:55,398 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:10:57,399 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:01,401 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:03,402 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:05,403 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:05,781 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:11:05,781 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:11:08,410 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:11:09,405 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:11,406 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:13,407 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:17,409 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:19,410 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:21,025 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:11:21,025 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:11:21,411 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:25,413 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:27,414 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:29,415 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:31,416 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:35,418 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:36,241 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:11:36,241 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:11:37,419 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:38,733 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:11:39,420 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:43,422 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:45,423 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:47,424 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:51,426 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:53,426 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:11:53,737 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:11:53,737 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:12:07,432 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:08,412 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:12:09,433 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:11,434 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:13,738 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:12:13,738 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:12:15,436 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:17,437 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:19,439 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:21,440 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:25,441 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:27,442 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:29,020 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:12:29,020 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:12:29,443 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:33,445 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:35,446 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:37,447 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:38,414 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:12:41,449 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:43,450 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:44,272 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:12:44,273 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:12:45,451 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:49,453 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:51,454 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:53,455 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:57,457 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:59,458 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:12:59,500 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:12:59,500 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:13:01,459 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:05,461 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:07,462 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:08,416 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:13:09,463 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:13,464 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:14,727 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:13:14,727 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:13:15,465 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:23,469 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:25,471 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:29,473 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:31,474 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:33,475 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:34,727 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:13:34,728 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:13:35,476 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:38,418 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:13:39,478 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:41,479 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:43,480 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:47,482 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:49,483 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:49,954 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:13:49,955 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:13:51,484 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:55,486 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:57,487 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:13:59,488 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:03,490 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:05,376 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:14:05,376 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:14:05,491 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:07,492 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:08,419 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:14:11,494 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:13,495 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:15,496 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:19,497 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:20,623 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:14:20,624 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:14:21,498 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:27,501 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:29,502 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:31,503 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:33,504 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:35,505 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:37,506 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:38,420 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:14:39,507 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:40,625 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:14:40,625 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:14:41,508 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:45,510 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:47,511 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:49,512 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:53,513 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:55,514 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:14:55,864 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:14:55,864 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:14:57,515 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:01,517 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:03,518 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:06,520 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:08,422 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:15:10,522 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:11,095 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:15:11,095 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:15:12,523 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:14,524 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:18,526 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:20,527 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:22,528 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:26,336 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:15:26,336 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:15:26,530 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:28,531 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:30,532 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:32,533 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:36,535 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:38,423 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:15:38,536 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:40,537 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:41,560 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:15:41,560 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:15:48,540 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:52,542 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:54,543 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:56,544 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:15:58,545 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:00,546 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:00,924 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:16:00,924 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:16:02,547 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:04,548 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:06,549 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:08,425 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:16:08,550 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:10,551 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:12,552 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:14,553 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:16,201 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: stop_status
+2022-12-17 18:16:16,202 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: stop_status
+2022-12-17 18:16:16,554 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:18,555 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:20,556 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:22,557 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:24,558 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:26,374 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: partial_history
+2022-12-17 18:16:26,378 DEBUG   SenderThread:2577779 [sender.py:send():303] send: exit
+2022-12-17 18:16:26,379 INFO    SenderThread:2577779 [sender.py:send_exit():442] handling exit code: 1
+2022-12-17 18:16:26,380 INFO    SenderThread:2577779 [sender.py:send_exit():444] handling runtime: 557
+2022-12-17 18:16:26,380 INFO    SenderThread:2577779 [sender.py:_save_file():1171] saving file wandb-summary.json with policy end
+2022-12-17 18:16:26,381 INFO    SenderThread:2577779 [sender.py:send_exit():450] send defer
+2022-12-17 18:16:26,381 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:26,381 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 0
+2022-12-17 18:16:26,382 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:26,382 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 0
+2022-12-17 18:16:26,382 INFO    SenderThread:2577779 [sender.py:transition_state():463] send defer: 1
+2022-12-17 18:16:26,382 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:26,382 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 1
+2022-12-17 18:16:26,382 INFO    HandlerThread:2577779 [system_monitor.py:finish():160] Stopping system monitor
+2022-12-17 18:16:26,385 DEBUG   SystemMonitor:2577779 [system_monitor.py:_start():137] Finished system metrics aggregation loop
+2022-12-17 18:16:26,385 DEBUG   SystemMonitor:2577779 [system_monitor.py:_start():141] Publishing last batch of metrics
+2022-12-17 18:16:26,386 INFO    HandlerThread:2577779 [interfaces.py:finish():173] Joined cpu
+2022-12-17 18:16:26,387 INFO    HandlerThread:2577779 [interfaces.py:finish():173] Joined disk
+2022-12-17 18:16:26,559 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:26,560 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/wandb-summary.json
+2022-12-17 18:16:26,823 INFO    HandlerThread:2577779 [interfaces.py:finish():173] Joined gpu
+2022-12-17 18:16:26,823 INFO    HandlerThread:2577779 [interfaces.py:finish():173] Joined memory
+2022-12-17 18:16:26,824 INFO    HandlerThread:2577779 [interfaces.py:finish():173] Joined network
+2022-12-17 18:16:26,825 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:26,825 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 1
+2022-12-17 18:16:26,825 INFO    SenderThread:2577779 [sender.py:transition_state():463] send defer: 2
+2022-12-17 18:16:26,825 DEBUG   SenderThread:2577779 [sender.py:send():303] send: stats
+2022-12-17 18:16:26,827 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:26,827 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 2
+2022-12-17 18:16:26,829 DEBUG   SenderThread:2577779 [sender.py:send():303] send: history
+2022-12-17 18:16:26,829 DEBUG   SenderThread:2577779 [sender.py:send():303] send: summary
+2022-12-17 18:16:26,830 INFO    SenderThread:2577779 [sender.py:_save_file():1171] saving file wandb-summary.json with policy end
+2022-12-17 18:16:26,830 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:26,831 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 2
+2022-12-17 18:16:26,831 INFO    SenderThread:2577779 [sender.py:transition_state():463] send defer: 3
+2022-12-17 18:16:26,831 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:26,831 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 3
+2022-12-17 18:16:26,832 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:26,832 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 3
+2022-12-17 18:16:26,832 INFO    SenderThread:2577779 [sender.py:transition_state():463] send defer: 4
+2022-12-17 18:16:26,832 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:26,832 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 4
+2022-12-17 18:16:26,833 DEBUG   SenderThread:2577779 [sender.py:send():303] send: summary
+2022-12-17 18:16:26,833 INFO    SenderThread:2577779 [sender.py:_save_file():1171] saving file wandb-summary.json with policy end
+2022-12-17 18:16:26,834 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:26,834 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 4
+2022-12-17 18:16:26,834 INFO    SenderThread:2577779 [sender.py:transition_state():463] send defer: 5
+2022-12-17 18:16:26,834 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:26,834 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 5
+2022-12-17 18:16:26,834 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:26,834 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 5
+2022-12-17 18:16:26,835 INFO    SenderThread:2577779 [sender.py:transition_state():463] send defer: 6
+2022-12-17 18:16:26,835 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:26,835 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 6
+2022-12-17 18:16:26,835 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:26,835 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 6
+2022-12-17 18:16:27,379 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: poll_exit
+2022-12-17 18:16:27,560 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/wandb-summary.json
+2022-12-17 18:16:28,560 INFO    Thread-13 :2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:29,633 INFO    SenderThread:2577779 [sender.py:transition_state():463] send defer: 7
+2022-12-17 18:16:29,637 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: poll_exit
+2022-12-17 18:16:29,638 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:29,638 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 7
+2022-12-17 18:16:29,638 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:29,638 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 7
+2022-12-17 18:16:29,639 INFO    SenderThread:2577779 [dir_watcher.py:finish():362] shutting down directory watcher
+2022-12-17 18:16:30,564 INFO    SenderThread:2577779 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:30,565 INFO    SenderThread:2577779 [dir_watcher.py:finish():392] scan: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files
+2022-12-17 18:16:30,565 INFO    SenderThread:2577779 [dir_watcher.py:finish():406] scan save: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/config.yaml config.yaml
+2022-12-17 18:16:30,565 INFO    SenderThread:2577779 [dir_watcher.py:finish():406] scan save: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log output.log
+2022-12-17 18:16:30,566 INFO    SenderThread:2577779 [dir_watcher.py:finish():406] scan save: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/wandb-metadata.json wandb-metadata.json
+2022-12-17 18:16:30,566 INFO    SenderThread:2577779 [dir_watcher.py:finish():406] scan save: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/wandb-summary.json wandb-summary.json
+2022-12-17 18:16:30,576 INFO    SenderThread:2577779 [dir_watcher.py:finish():406] scan save: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/conda-environment.yaml conda-environment.yaml
+2022-12-17 18:16:30,578 INFO    SenderThread:2577779 [dir_watcher.py:finish():406] scan save: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/requirements.txt requirements.txt
+2022-12-17 18:16:30,579 INFO    SenderThread:2577779 [sender.py:transition_state():463] send defer: 8
+2022-12-17 18:16:30,583 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:30,587 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 8
+2022-12-17 18:16:30,591 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:30,592 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 8
+2022-12-17 18:16:30,592 INFO    SenderThread:2577779 [file_pusher.py:finish():168] shutting down file pusher
+2022-12-17 18:16:31,243 INFO    Thread-19 :2577779 [upload_job.py:push():143] Uploaded file /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/wandb-summary.json
+2022-12-17 18:16:31,247 INFO    Thread-17 :2577779 [upload_job.py:push():143] Uploaded file /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/config.yaml
+2022-12-17 18:16:31,266 INFO    Thread-18 :2577779 [upload_job.py:push():143] Uploaded file /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/output.log
+2022-12-17 18:16:32,381 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: keepalive
+2022-12-17 18:16:32,571 INFO    Thread-20 :2577779 [upload_job.py:push():143] Uploaded file /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/conda-environment.yaml
+2022-12-17 18:16:36,348 INFO    Thread-21 :2577779 [upload_job.py:push():143] Uploaded file /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/files/requirements.txt
+2022-12-17 18:16:36,548 INFO    Thread-12 :2577779 [sender.py:transition_state():463] send defer: 9
+2022-12-17 18:16:36,549 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:36,549 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 9
+2022-12-17 18:16:36,549 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:36,549 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 9
+2022-12-17 18:16:36,550 INFO    SenderThread:2577779 [file_pusher.py:join():173] waiting for file pusher
+2022-12-17 18:16:36,550 INFO    SenderThread:2577779 [sender.py:transition_state():463] send defer: 10
+2022-12-17 18:16:36,550 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:36,550 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 10
+2022-12-17 18:16:36,550 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:36,550 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 10
+2022-12-17 18:16:37,170 INFO    SenderThread:2577779 [sender.py:transition_state():463] send defer: 11
+2022-12-17 18:16:37,171 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:37,171 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 11
+2022-12-17 18:16:37,172 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:37,172 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 11
+2022-12-17 18:16:37,172 INFO    SenderThread:2577779 [sender.py:transition_state():463] send defer: 12
+2022-12-17 18:16:37,173 DEBUG   SenderThread:2577779 [sender.py:send():303] send: final
+2022-12-17 18:16:37,173 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: defer
+2022-12-17 18:16:37,173 DEBUG   SenderThread:2577779 [sender.py:send():303] send: footer
+2022-12-17 18:16:37,173 INFO    HandlerThread:2577779 [handler.py:handle_request_defer():162] handle defer: 12
+2022-12-17 18:16:37,173 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: defer
+2022-12-17 18:16:37,174 INFO    SenderThread:2577779 [sender.py:send_request_defer():459] handle sender defer: 12
+2022-12-17 18:16:37,175 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: poll_exit
+2022-12-17 18:16:37,176 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: server_info
+2022-12-17 18:16:37,176 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: poll_exit
+2022-12-17 18:16:37,176 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: get_summary
+2022-12-17 18:16:37,177 DEBUG   SenderThread:2577779 [sender.py:send_request():317] send_request: server_info
+2022-12-17 18:16:37,178 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: sampled_history
+2022-12-17 18:16:39,311 INFO    MainThread:2577779 [wandb_run.py:_footer_history_summary_info():3377] rendering history
+2022-12-17 18:16:39,312 INFO    MainThread:2577779 [wandb_run.py:_footer_history_summary_info():3409] rendering summary
+2022-12-17 18:16:39,312 INFO    MainThread:2577779 [wandb_run.py:_footer_sync_info():3333] logging synced files
+2022-12-17 18:16:39,313 DEBUG   HandlerThread:2577779 [handler.py:handle_request():139] handle_request: shutdown
+2022-12-17 18:16:39,313 INFO    HandlerThread:2577779 [handler.py:finish():814] shutting down handler
+2022-12-17 18:16:40,173 INFO    WriterThread:2577779 [datastore.py:close():279] close: /home/sungwoopark/dl-experiment/wandb/run-20221217_180706-3fneooxj/run-3fneooxj.wandb
+2022-12-17 18:16:40,311 INFO    SenderThread:2577779 [sender.py:finish():1331] shutting down sender
+2022-12-17 18:16:40,311 INFO    SenderThread:2577779 [file_pusher.py:finish():168] shutting down file pusher
+2022-12-17 18:16:40,311 INFO    SenderThread:2577779 [file_pusher.py:join():173] waiting for file pusher
+2022-12-17 18:16:40,316 INFO    MainThread:2577779 [internal.py:handle_exit():78] Internal process exited

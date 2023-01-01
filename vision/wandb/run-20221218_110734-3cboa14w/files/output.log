@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/sungwoopark/dl-experiment/main.py", line 52, in <module>
+    model = ConvNet().to(DEVICE)
+  File "/home/sungwoopark/anaconda3/envs/main/lib/python3.9/site-packages/torch/nn/modules/module.py", line 987, in to
+    return self._apply(convert)
+  File "/home/sungwoopark/anaconda3/envs/main/lib/python3.9/site-packages/torch/nn/modules/module.py", line 639, in _apply
+    module._apply(fn)
+  File "/home/sungwoopark/anaconda3/envs/main/lib/python3.9/site-packages/torch/nn/modules/module.py", line 662, in _apply
+    param_applied = fn(param)
+  File "/home/sungwoopark/anaconda3/envs/main/lib/python3.9/site-packages/torch/nn/modules/module.py", line 985, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+KeyboardInterrupt
