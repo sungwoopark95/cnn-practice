@@ -85,6 +85,7 @@ if __name__ == "__main__":
     max_acc = 0
     saved_model = None
     fname = ""
+    save_epoch = 0
     
     for epoch in range(EPOCHS):
         train(model, train_loader, optimizer, scheduler)
@@ -97,9 +98,11 @@ if __name__ == "__main__":
         if max_acc < accs[epoch]:
             max_acc = accs[epoch]
             saved_model = model.state_dict()
-            fname = f"./saved_models/{cfg.dataset}_{model.__class__.__name__}_{cfg.bs}_{epoch+1}.pt"
+            fname = f"./saved_models/{cfg.dataset}_{model.__class__.__name__}_{cfg.bs}.pt"
+            save_epoch = epoch + 1
         else:
             torch.save(saved_model, fname)
+            print(f"Model save at epoch {save_epoch}")
         
         wandb.log({"acc": test_accuracy}, commit=False)
         wandb.log({"loss": test_loss})
