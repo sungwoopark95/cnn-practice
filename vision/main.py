@@ -9,7 +9,7 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from model import *
+from models import get_model
 
 # mpl.use("TkAgg")
 
@@ -61,8 +61,7 @@ if __name__ == "__main__":
 
     ## define training vars
     EPOCHS = cfg.epoch
-    model = Model().to(DEVICE)
-    model.setName(cfg.name)
+    model = get_model(cfg.name.lower())().to(DEVICE)
     optimizer = torch.optim.Adam(model.parameters(), lr=cfg.lr)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=cfg.factor)
     criterion = nn.CrossEntropyLoss()
@@ -98,9 +97,9 @@ if __name__ == "__main__":
         if max_acc < accs[epoch]:
             max_acc = accs[epoch]
             saved_model = model.state_dict()
-            fname = f"./models/{cfg.dataset}_{model.__class__.__name__}_{cfg.bs}_{epoch}.pt"
+            fname = f"./saved_models/{cfg.dataset}_{model.__class__.__name__}_{cfg.bs}_{epoch+1}.pt"
         else:
-            torch.save_model(saved_model, fname)
+            torch.save(saved_model, fname)
         
         wandb.log({"acc": test_accuracy}, commit=False)
         wandb.log({"loss": test_loss})
