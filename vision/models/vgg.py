@@ -12,6 +12,8 @@ class VGG(nn.Module):
             num_classes = 10
         elif cfg.dataset == "cifar100":
             num_classes = 100
+        elif cfg.dataset == "imagenet":
+            num_classes = 1000
         
         ## from 4 ~ 2048
         feats = [4, 8, 16, 32, 64, 
@@ -32,6 +34,10 @@ class VGG(nn.Module):
         feat9 = feats[10]
         feat10 = feats[10]
         
+        feat11 = feats[10]
+        feat12 = feats[10]
+        feat13 = feats[10]        
+        
         self.conv1 = nn.Conv2d(in_channels = 3, out_channels = feat1, kernel_size = 3, stride = 1, padding = 'same')
         self.conv2 = nn.Conv2d(in_channels = feat1, out_channels = feat2, kernel_size = 3, padding = 'same')
         
@@ -46,7 +52,11 @@ class VGG(nn.Module):
         self.conv9 = nn.Conv2d(in_channels = feat8, out_channels = feat9, kernel_size = 3, padding = 'same')
         self.conv10 = nn.Conv2d(in_channels = feat9, out_channels = feat10, kernel_size = 3, padding = 'same')
         
-        self.num_feat = 7 * 7 * feat10
+        self.conv11 = nn.Conv2d(in_channels = feat10, out_channels = feat11, kernel_size = 3, padding = 'same')
+        self.conv12 = nn.Conv2d(in_channels = feat11, out_channels = feat12, kernel_size = 3, padding = 'same')
+        self.conv13 = nn.Conv2d(in_channels = feat13, out_channels = feat13, kernel_size = 3, padding = 'same')
+        
+        self.num_feat = 7 * 7 * feat13
         
         self.fc1 = nn.Linear(self.num_feat, cfg.head_size1)
         self.fc2 = nn.Linear(cfg.head_size1, cfg.head_size2)
@@ -64,6 +74,9 @@ class VGG(nn.Module):
         self.conv_bn8 = nn.BatchNorm2d(feat8)
         self.conv_bn9 = nn.BatchNorm2d(feat9)
         self.conv_bn10 = nn.BatchNorm2d(feat10)
+        self.conv_bn11 = nn.BatchNorm2d(feat11)
+        self.conv_bn12 = nn.BatchNorm2d(feat12)
+        self.conv_bn13 = nn.BatchNorm2d(feat13)
         
         self.fc_bn1 = nn.BatchNorm1d(cfg.head_size1)
         self.fc_bn2 = nn.BatchNorm1d(cfg.head_size2)
@@ -96,6 +109,14 @@ class VGG(nn.Module):
         x = F.relu(self.conv_bn9(x))
         x = self.conv10(x)
         x = F.relu(self.conv_bn10(x))
+        x = self.pool(x)
+        
+        x = self.conv11(x)
+        x = F.relu(self.conv_bn11(x))       
+        x = self.conv12(x)
+        x = F.relu(self.conv_bn12(x))
+        x = self.conv13(x)
+        x = F.relu(self.conv_bn13(x))
         x = self.pool(x)
         
         ## head

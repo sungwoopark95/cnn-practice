@@ -7,11 +7,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
-import matplotlib as mpl
 import matplotlib.pyplot as plt
 from models import get_model
 
-# mpl.use("TkAgg")
 
 def train(model, train_loader, optimizer, scheduler=None):
     model.train()
