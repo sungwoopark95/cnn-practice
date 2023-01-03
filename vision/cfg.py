@@ -4,6 +4,7 @@ import argparse
 def get_cfg():
     parser = argparse.ArgumentParser()
     parser.add_argument("--bs", type=int, default=128, help="Batch size")
+    parser.add_argument("--num_workers", type=int, default=1, help="Number of threads")
     parser.add_argument("--name", type=str, default="Model", help="The name of the model")
     parser.add_argument("--save_plot", action="store_true")
     parser.add_argument("--tqdm", action="store_true")

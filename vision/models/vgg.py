@@ -38,7 +38,7 @@ class VGG(nn.Module):
         feat12 = feats[10]
         feat13 = feats[10]        
         
-        self.conv1 = nn.Conv2d(in_channels = 3, out_channels = feat1, kernel_size = 3, stride = 1, padding = 'same')
+        self.conv1 = nn.Conv2d(in_channels = 3, out_channels = feat1, kernel_size = 3, padding = 'same')
         self.conv2 = nn.Conv2d(in_channels = feat1, out_channels = feat2, kernel_size = 3, padding = 'same')
         
         self.conv3 = nn.Conv2d(in_channels = feat2, out_channels = feat3, kernel_size = 3, padding = 'same')
@@ -80,6 +80,8 @@ class VGG(nn.Module):
         
         self.fc_bn1 = nn.BatchNorm1d(cfg.head_size1)
         self.fc_bn2 = nn.BatchNorm1d(cfg.head_size2)
+        
+        self.dropout = nn.Dropout(p=cfg.drop_fc)
             
     def forward(self, x):
         ## CNN
@@ -123,8 +125,10 @@ class VGG(nn.Module):
         x = x.view(-1, self.num_feat)
         x = self.fc1(x)
         x = F.relu(self.fc_bn1(x))
+        x = self.dropout(x)
         x = self.fc2(x)
         x = F.relu(self.fc_bn2(x))
+        x = self.dropout(x)
         x = self.fc3(x)
         
         return x

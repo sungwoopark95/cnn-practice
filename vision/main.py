@@ -56,26 +56,43 @@ if __name__ == "__main__":
     print(f"Using PyTorch version: {torch.__version__}, Device: {DEVICE}")
     
     wandb.init(project=cfg.wandb, config=cfg)
+   
+    ## import dataset and model
+    train_dataset = CustomDataset(train=True, prob=cfg.aug_p)
+    test_dataset = CustomDataset(train=False, prob=0.0)
+    
+    model = get_model(cfg.name.lower())()
+    model_name = model.__class__.__name__
 
+    if cfg.num_workers > 1:
+        train_loader = DataLoader(dataset=train_dataset, 
+                                batch_size=cfg.bs, 
+                                shuffle=True, 
+                                collate_fn=train_dataset.collate_fn,
+                                num_workers=cfg.num_workers)
+        test_loader = DataLoader(dataset=test_dataset, 
+                                batch_size=cfg.bs, 
+                                shuffle=False, 
+                                collate_fn=test_dataset.collate_fn,
+                                num_workers=cfg.num_workers)
+        device_ids = [i for i in range(cfg.num_workers)]
+        model = torch.nn.DataParallel(model, device_ids=device_ids).to(DEVICE)
+    else:
+        train_loader = DataLoader(dataset=train_dataset, 
+                                batch_size=cfg.bs, 
+                                shuffle=True, 
+                                collate_fn=train_dataset.collate_fn)
+        test_loader = DataLoader(dataset=test_dataset, 
+                                batch_size=cfg.bs, 
+                                shuffle=False, 
+                                collate_fn=test_dataset.collate_fn)
+        model = model.to(DEVICE)
+    
     ## define training vars
     EPOCHS = cfg.epoch
-    model = get_model(cfg.name.lower())().to(DEVICE)
     optimizer = torch.optim.Adam(model.parameters(), lr=cfg.lr)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=cfg.factor)
     criterion = nn.CrossEntropyLoss()
-    
-    ## import dataset
-    train_dataset = CustomDataset(train=True, prob=cfg.aug_p)
-    test_dataset = CustomDataset(train=False, prob=0.0)
-
-    train_loader = DataLoader(dataset=train_dataset, 
-                            batch_size=cfg.bs, 
-                            shuffle=True, 
-                            collate_fn=train_dataset.collate_fn)
-    test_loader = DataLoader(dataset=test_dataset, 
-                            batch_size=cfg.bs, 
-                            shuffle=False, 
-                            collate_fn=test_dataset.collate_fn)
     
     ## training
     accs = np.zeros(shape=EPOCHS)
@@ -88,7 +105,7 @@ if __name__ == "__main__":
     for epoch in range(EPOCHS):
         train(model, train_loader, optimizer, scheduler)
         test_loss, test_accuracy = evaluate(model, test_loader)
-        print(f"\n[EPOCH: {epoch+1}], \tModel: {model.__class__.__name__}, \tTest Loss: {test_loss:.4f}, \tTest Accuracy: {test_accuracy:.2f} % \n")
+        print(f"\n[EPOCH: {epoch+1}], \tModel: {model_name}, \tTest Loss: {test_loss:.4f}, \tTest Accuracy: {test_accuracy:.2f} % \n")
         accs[epoch] = test_accuracy
         losses[epoch] = test_loss
         
@@ -96,7 +113,7 @@ if __name__ == "__main__":
         if max_acc < accs[epoch]:
             max_acc = accs[epoch]
             saved_model = model.state_dict()
-            fname = f"./saved_models/{cfg.dataset}_{model.__class__.__name__}_{cfg.bs}.pt"
+            fname = f"./saved_models/{cfg.dataset}_{model_name}_{cfg.bs}.pt"
             save_epoch = epoch + 1
         else:
             torch.save(saved_model, fname)
@@ -121,4 +138,4 @@ if __name__ == "__main__":
         plt.grid(True)
         
         plt.tight_layout()
-        plt.savefig(f"plots/{cfg.dataset}_{model.__class__.__name__}_{cfg.bs}.png")
+        plt.savefig(f"plots/{cfg.dataset}_{model_name}_{cfg.bs}.png")
