@@ -3,3 +3,6 @@ saved_models/
 wandb/
 data/
 *.out
+
+dl-practice/vision/__pycache__
+dl-practice/vision/wandb
