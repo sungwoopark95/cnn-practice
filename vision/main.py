@@ -76,7 +76,7 @@ if __name__ == "__main__":
                                 collate_fn=test_dataset.collate_fn,
                                 num_workers=cfg.num_workers)
         device_ids = [i for i in range(cfg.num_workers)]
-        model = torch.nn.DataParallel(model, device_ids=device_ids).to(DEVICE)
+        model = nn.DataParallel(model, device_ids=device_ids).to(DEVICE)
     else:
         train_loader = DataLoader(dataset=train_dataset, 
                                 batch_size=cfg.bs, 

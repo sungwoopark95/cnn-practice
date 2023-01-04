@@ -1,8 +1,15 @@
+# directories
 __pycache__/
 saved_models/
 wandb/
 data/
-*.out
-
 dl-practice/vision/__pycache__
 dl-practice/vision/wandb
+latest_run/
+
+# files 
+*.out
+*.sh
+*.log
+*.pyc
+*.pt

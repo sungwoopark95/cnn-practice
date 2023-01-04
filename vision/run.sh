@@ -9,4 +9,4 @@
 source /home/${USER}/.bashrc
 conda activate main
 
-srun python3 /home/sungwoopark/dl-practice/vision/main.py --dataset cifar100 --bs 256 --wandb convnet-exp --name vgg --img_size 224 --drop_cnn 0 --drop_fc 0.5 --save_plot --num_workers 4
+srun python3 /home/sungwoopark/dl-practice/vision/main.py --dataset cifar100 --bs 512 --wandb convnet-exp --name vgg19 --img_size 224 --drop_cnn 0 --drop_fc 0.5 --save_plot --tqdm --num_workers 4 --lr 5e-4
