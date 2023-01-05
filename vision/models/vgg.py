@@ -122,7 +122,8 @@ class VGG(nn.Module):
         x = self.pool(x)
         
         ## head
-        x = x.view(-1, self.num_feat)
+        num_feat = x.size(1) * x.size(2) * x.size(3)
+        x = x.view(-1, num_feat)
         x = self.fc1(x)
         x = F.relu(self.fc_bn1(x))
         x = self.dropout(x)
