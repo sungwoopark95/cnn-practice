@@ -68,7 +68,11 @@ class VGG19(nn.Module):
         self.fc2 = nn.Linear(cfg.head_size1, cfg.head_size2)
         self.fc3 = nn.Linear(cfg.head_size2, num_classes)
 
-        self.pool = nn.MaxPool2d(kernel_size = 2, stride = 2)
+        self.pool1 = nn.MaxPool2d(kernel_size = 2, stride = 2)
+        self.pool2 = nn.MaxPool2d(kernel_size = 2, stride = 2)
+        self.pool3 = nn.MaxPool2d(kernel_size = 2, stride = 2)
+        self.pool4 = nn.MaxPool2d(kernel_size = 2, stride = 2)
+        self.pool5 = nn.MaxPool2d(kernel_size = 2, stride = 2)
 
         self.conv_bn1 = nn.BatchNorm2d(feat1)
         self.conv_bn2 = nn.BatchNorm2d(feat2)
@@ -98,13 +102,13 @@ class VGG19(nn.Module):
         x = F.relu(self.conv_bn1(x))
         x = self.conv2(x)
         x = F.relu(self.conv_bn2(x))
-        x = self.pool(x)
+        x = self.pool1(x)
         
         x = self.conv3(x)
         x = F.relu(self.conv_bn3(x))
         x = self.conv4(x)
         x = F.relu(self.conv_bn4(x))
-        x = self.pool(x)
+        x = self.pool2(x)
         
         x = self.conv5(x)
         x = F.relu(self.conv_bn5(x))       
@@ -114,7 +118,7 @@ class VGG19(nn.Module):
         x = F.relu(self.conv_bn7(x))
         x = self.conv8(x)
         x = F.relu(self.conv_bn8(x)) 
-        x = self.pool(x)
+        x = self.pool3(x)
         
         x = self.conv9(x)
         x = F.relu(self.conv_bn9(x))
@@ -124,7 +128,7 @@ class VGG19(nn.Module):
         x = F.relu(self.conv_bn11(x))       
         x = self.conv12(x)
         x = F.relu(self.conv_bn12(x))
-        x = self.pool(x)
+        x = self.pool4(x)
         
         x = self.conv13(x)
         x = F.relu(self.conv_bn13(x))
@@ -134,7 +138,7 @@ class VGG19(nn.Module):
         x = F.relu(self.conv_bn15(x))
         x = self.conv16(x)
         x = F.relu(self.conv_bn16(x))
-        x = self.pool(x)
+        x = self.pool5(x)
         
         num_feat = x.size(1) * x.size(2) * x.size(3)
         
