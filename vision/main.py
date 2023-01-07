@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from models import get_model
 
 
-def train(model, model_name, train_loader, optimizer, scheduler=None):
+def train(model, model_name, train_loader, optimizer):
     model.train()
     if cfg.tqdm:
         tqdm_bar = tqdm(train_loader)
@@ -23,14 +23,14 @@ def train(model, model_name, train_loader, optimizer, scheduler=None):
         optimizer.zero_grad()
         output = model(image)
         if model_name == "GoogLeNet":
-            if cfg.google_final:
-                output = output[0]
-            elif cfg.google_aux1:
-                output = output[2]
-            elif cfg.google_aux2:
-                output = output[1]
+            if not cfg.google_aux:
+                loss = criterion(output, label)
+            else:
+                final_output, aux2, aux1 = output
+                loss = (0.4*criterion(final_output, label)) + (0.3*criterion(aux1, label)) + (0.3*criterion(aux2, label))
+        else:
+            loss = criterion(output, label)
             
-        loss = criterion(output, label)
         loss.backward()
         optimizer.step()
         if cfg.tqdm:
@@ -55,7 +55,7 @@ def evaluate(model, test_loader):
             correct += prediction.eq(label.view_as(prediction)).sum().item()
     
     test_loss /= len(test_loader.dataset)
-    test_accuracy = 100. * correct / len(test_loader.dataset)
+    test_accuracy = correct / len(test_loader.dataset)
     return test_loss, test_accuracy
 
 if __name__ == "__main__":
@@ -69,7 +69,10 @@ if __name__ == "__main__":
     train_dataset = CustomDataset(train=True, prob=cfg.aug_p)
     test_dataset = CustomDataset(train=False, prob=0.0)
     
-    model = get_model(cfg.name.lower())()
+    if not cfg.google_aux:
+        model = get_model(cfg.name.lower())(cfg.google_aux)
+    else:
+        model = get_model(cfg.name.lower())()
     model_name = model.__class__.__name__
 
     if cfg.num_workers > 1:
@@ -111,9 +114,9 @@ if __name__ == "__main__":
     save_epoch = 0
     
     for epoch in range(EPOCHS):
-        train(model, model_name, train_loader, optimizer, scheduler)
+        train(model, model_name, train_loader, optimizer)
         test_loss, test_accuracy = evaluate(model, test_loader)
-        print(f"\n[EPOCH: {epoch+1}], \tModel: {model_name}, \tTest Loss: {test_loss:.4f}, \tTest Accuracy: {test_accuracy:.2f} % \n")
+        print(f"\n[EPOCH: {epoch+1}], \tModel: {model_name}, \tTest Loss: {test_loss:.4f}, \tTest Accuracy: {test_accuracy * 100:.2f} % \n")
         accs[epoch] = test_accuracy
         losses[epoch] = test_loss
         

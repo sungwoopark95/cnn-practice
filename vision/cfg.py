@@ -8,9 +8,8 @@ def get_cfg():
     parser.add_argument("--name", type=str, default="Model", help="The name of the model")
     parser.add_argument("--save_plot", action="store_true")
     parser.add_argument("--tqdm", action="store_true")
-    parser.add_argument("--google_aux1", action="store_true")
-    parser.add_argument("--google_aux2", action="store_true")
-    parser.add_argument("--google_final", action="store_true")
+    parser.add_argument("--google_aux", action="store_false")
+    parser.add_argument("--google_modified", type=bool, default=True)
     
     ## arguments for data augmentation
     augarg = partial(parser.add_argument, type=float)
