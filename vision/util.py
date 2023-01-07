@@ -12,7 +12,7 @@ cfg = get_cfg()
 ## augmentation
 def augmentation(image):
     p = np.random.uniform(0, 1)
-    if cfg.dataset != "imagenet":
+    if cfg.dataset == "imagenet":
         crop_size = 224
     else:
         crop_size = 32

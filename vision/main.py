@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from models import get_model
 
 
-def train(model, train_loader, optimizer, scheduler=None):
+def train(model, model_name, train_loader, optimizer, scheduler=None):
     model.train()
     if cfg.tqdm:
         tqdm_bar = tqdm(train_loader)
@@ -22,6 +22,14 @@ def train(model, train_loader, optimizer, scheduler=None):
         label = label.to(DEVICE)
         optimizer.zero_grad()
         output = model(image)
+        if model_name == "GoogLeNet":
+            if cfg.google_final:
+                output = output[0]
+            elif cfg.google_aux1:
+                output = output[2]
+            elif cfg.google_aux2:
+                output = output[1]
+            
         loss = criterion(output, label)
         loss.backward()
         optimizer.step()
@@ -103,7 +111,7 @@ if __name__ == "__main__":
     save_epoch = 0
     
     for epoch in range(EPOCHS):
-        train(model, train_loader, optimizer, scheduler)
+        train(model, model_name, train_loader, optimizer, scheduler)
         test_loss, test_accuracy = evaluate(model, test_loader)
         print(f"\n[EPOCH: {epoch+1}], \tModel: {model_name}, \tTest Loss: {test_loss:.4f}, \tTest Accuracy: {test_accuracy:.2f} % \n")
         accs[epoch] = test_accuracy
