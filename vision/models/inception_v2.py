@@ -307,7 +307,7 @@ class InceptionAux(nn.Module):
         self.dropout = nn.Dropout(p=cfg.drop_fc)
         
     def forward(self, x):
-        x = F.adaptive_avg_pool2d(x, kernel_size=5, stride=3)
+        x = F.avg_pool2d(x, kernel_size=5, stride=3)
         x = self.conv(x)
         x = F.adaptive_avg_pool2d(x, [1, 1])
         x = torch.flatten(x, 1)
