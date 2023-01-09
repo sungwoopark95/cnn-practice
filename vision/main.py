@@ -64,7 +64,8 @@ if __name__ == "__main__":
     DEVICE = torch.device('cuda') if torch.cuda.is_available else torch.device('cpu')
     print(f"Using PyTorch version: {torch.__version__}, Device: {DEVICE}")
     
-    wandb.init(project=cfg.wandb, config=cfg)
+    if cfg.use_wandb:
+        wandb.init(project=cfg.wandb, config=cfg)
    
     ## import dataset and model
     train_dataset = CustomDataset(train=True, prob=cfg.aug_p)
@@ -131,8 +132,9 @@ if __name__ == "__main__":
             torch.save(saved_model, fname)
             print(f"Model save at epoch {save_epoch}")
         
-        wandb.log({"acc": test_accuracy}, commit=False)
-        wandb.log({"loss": test_loss})
+        if cfg.use_wandb:
+            wandb.log({"acc": test_accuracy}, commit=False)
+            wandb.log({"loss": test_loss})
         scheduler.step(test_loss)
         
     ## plot save
