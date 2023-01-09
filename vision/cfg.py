@@ -11,6 +11,7 @@ def get_cfg():
     parser.add_argument("--google_aux", action="store_false")
     parser.add_argument("--google_modified", type=bool, default=True)
     parser.add_argument("--label_smoothing", type=float, default=0.0)
+    parser.add_argument("--use_wandb", action="store_true")
     
     ## arguments for data augmentation
     augarg = partial(parser.add_argument, type=float)
