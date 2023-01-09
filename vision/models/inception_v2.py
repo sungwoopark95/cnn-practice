@@ -73,10 +73,10 @@ class InceptionV2(nn.Module):
         self.inception9 = InceptionA(in_channels=(2*out77 + 2*out19), to3x3_1=ch34, to3x3_2=ch35, out3x3_1=out33, 
                                      to3x3_3=ch36, out3x3_2=out34, out1x1_1=out20, out1x1_2=out21)
         self.inception10 = InceptionC(in_channels=(out33+out34+out20+out21), ch3=ch37, out3=out35, out1=out22)
-        self.inception11 = InceptionC(in_channels=out35+out22, ch3=ch38, out3=out36, out1=out23)
+        self.inception11 = InceptionC(in_channels=(4*out35 + 2*out22), ch3=ch38, out3=out36, out1=out23)
         
         self.pool3 = nn.AvgPool2d(kernel_size=(1, 1))
-        self.fc = nn.Linear(in_features=out36+out23, out_features=num_classes)
+        self.fc = nn.Linear(in_features=(4*out36 + 2*out23), out_features=num_classes)
         self.dropout = nn.Dropout(p=cfg.drop_cnn)
         
     def forward(self, x):                
