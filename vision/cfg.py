@@ -10,6 +10,7 @@ def get_cfg():
     parser.add_argument("--tqdm", action="store_true")
     parser.add_argument("--google_aux", action="store_false")
     parser.add_argument("--google_modified", type=bool, default=True)
+    parser.add_argument("--label_smoothing", type=float, default=0.0)
     
     ## arguments for data augmentation
     augarg = partial(parser.add_argument, type=float)

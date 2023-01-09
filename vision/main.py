@@ -27,14 +27,14 @@ def train(model, model_name, train_loader, optimizer):
                 loss = criterion(output, label)
             else:
                 final_output, aux2, aux1 = output
-                loss = (0.4*criterion(final_output, label)) + (0.3*criterion(aux1, label)) + (0.3*criterion(aux2, label))
+                loss = criterion(final_output, label) + (0.5*criterion(aux1, label)) + (0.5*criterion(aux2, label))
         else:
             loss = criterion(output, label)
             
         loss.backward()
         optimizer.step()
         if cfg.tqdm:
-            tqdm_bar.set_description(f"Epoch {epoch} - train loss: {loss.item():.6f}")
+            tqdm_bar.set_description(f"Epoch {epoch+1} - train loss: {loss.item():.6f}")
 
 def evaluate(model, test_loader):
     model.eval()
@@ -57,6 +57,7 @@ def evaluate(model, test_loader):
     test_loss /= len(test_loader.dataset)
     test_accuracy = correct / len(test_loader.dataset)
     return test_loss, test_accuracy
+
 
 if __name__ == "__main__":
     cfg = get_cfg()
@@ -103,7 +104,7 @@ if __name__ == "__main__":
     EPOCHS = cfg.epoch
     optimizer = torch.optim.Adam(model.parameters(), lr=cfg.lr)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=cfg.factor)
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.CrossEntropyLoss(label_smoothing=cfg.label_smoothing)
     
     ## training
     accs = np.zeros(shape=EPOCHS)
