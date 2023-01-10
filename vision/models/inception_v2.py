@@ -106,6 +106,7 @@ class InceptionV2(nn.Module):
         x = self.inception11(x)
         x = self.pool3(x)
         x = self.dropout(x)
+        print(x.size())
         
         x = torch.flatten(x, 1)
         x = self.fc(x)
