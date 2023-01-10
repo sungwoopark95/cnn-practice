@@ -9,6 +9,8 @@ class InceptionV2(nn.Module):
     def __init__(self, aux_logits=True):
         super(InceptionV2, self).__init__()
         
+        self.aux_logits = aux_logits
+        
         if cfg.dataset == "cifar10":
             num_classes = 10
         elif cfg.dataset == "cifar100":
@@ -65,7 +67,7 @@ class InceptionV2(nn.Module):
         self.inception7 = InceptionB(in_channels=(2*out75 + 2*out17), ch7=ch76, out7=out76, out1=out18)
         self.inception8 = InceptionB(in_channels=(2*out76 + 2*out18), ch7=ch77, out7=out77, out1=out19)
         
-        if aux_logits:
+        if self.aux_logits:
             self.aux = InceptionAux(in_channels=(2*out77 + 2*out19), num_classes=num_classes)
         else:
             self.aux = None

@@ -8,7 +8,7 @@ def get_cfg():
     parser.add_argument("--name", type=str, default="Model", help="The name of the model")
     parser.add_argument("--save_plot", action="store_true")
     parser.add_argument("--tqdm", action="store_true")
-    parser.add_argument("--google_aux", action="store_false")
+    parser.add_argument("--aux", action="store_false")
     parser.add_argument("--google_modified", type=bool, default=True)
     parser.add_argument("--label_smoothing", type=float, default=0.0)
     parser.add_argument("--use_wandb", action="store_true")
