@@ -75,7 +75,7 @@ class InceptionV2(nn.Module):
         self.inception10 = InceptionC(in_channels=(out33+out34+out20+out21), ch3=ch37, out3=out35, out1=out22)
         self.inception11 = InceptionC(in_channels=(4*out35 + 2*out22), ch3=ch38, out3=out36, out1=out23)
         
-        self.pool3 = nn.AvgPool2d(kernel_size=(1, 1))
+        self.pool3 = nn.AdaptiveAvgPool2d(output_size=(1, 1))
         self.fc = nn.Linear(in_features=(4*out36 + 2*out23), out_features=num_classes)
         self.dropout = nn.Dropout(p=cfg.drop_cnn)
         
@@ -106,7 +106,6 @@ class InceptionV2(nn.Module):
         x = self.inception11(x)
         x = self.pool3(x)
         x = self.dropout(x)
-        print(x.size())
         
         x = torch.flatten(x, 1)
         x = self.fc(x)
