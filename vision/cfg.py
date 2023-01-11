@@ -22,7 +22,7 @@ def get_cfg():
     augarg("--ro_a", default=15, help="Rotation angle")
     
     parser.add_argument("--lr", type=float, default=1e-3, help="Learning rate")
-    parser.add_argument("--opt", choices=['sgd', 'rmsprop', 'adagrad', 'adam', 'adamax'], default='adam', help="Optimizers")
+    parser.add_argument("--optim", choices=['sgd', 'rmsprop', 'adagrad', 'adam', 'adamax', 'adadelta'], default='adam', help="Optimizers")
     parser.add_argument("--factor", type=float, default=0.1, help="Scheduler factor")
     
     ## arguments for feature map

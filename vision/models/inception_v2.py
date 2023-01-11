@@ -19,16 +19,16 @@ class InceptionV2(nn.Module):
             num_classes = 1000
         
         conv1out, conv2out, conv3out, conv4out, conv5out = 32, 32, 64, 80, 192
-        ch71, out71, out11 = 192, 192, 192
-        ch72, out72, out12 = 256, 256, 256
-        ch73, out73, out13 = 288, 288, 288
-        ch31, ch32, out31, ch33, out32, out14, out15 = 256, 256, 128, 256, 192, 64, 64
-        ch74, out74, out16 = 256, 256, 256
-        ch75, out75, out17 = 384, 384, 384
-        ch76, out76, out18 = 384, 384, 384
-        ch77, out77, out19 = 256, 256, 256
-        ch34, ch35, out33, ch36, out34, out20, out21 = 96, 96, 96, 96, 96, 96, 96
-        ch37, ch38, out35, out36, out22, out23 = 96, 96, 192, 256, 96, 96
+        ch71, out71, out11 = 128, 128, 128
+        ch72, out72, out12 = 128, 192, 192
+        ch73, out73, out13 = 128, 192, 192
+        ch31, ch32, out31, ch33, out32, out14, out15 = 64, 96, 96, 48, 64, 64, 64
+        ch74, out74, out16 = 128, 128, 128
+        ch75, out75, out17 = 128, 192, 192
+        ch76, out76, out18 = 128, 192, 192
+        ch77, out77, out19 = 128, 192, 192
+        ch34, ch35, out33, ch36, out34, out20, out21 = 64, 96, 96, 48, 64, 64, 64
+        ch37, ch38, out35, out36, out22, out23 = 384, 384, 384, 384, 256, 256
         
         self.conv1 = nn.Sequential(
             nn.Conv2d(in_channels=3, out_channels=conv1out, kernel_size=3, stride=2),

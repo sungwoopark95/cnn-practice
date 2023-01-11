@@ -11,6 +11,16 @@ import matplotlib.pyplot as plt
 from models import get_model
 
 
+OPTIMIZERS = {
+    'sgd': torch.optim.SGD, 
+    'rmsprop': torch.optim.RMSprop, 
+    'adagrad': torch.optim.Adagrad, 
+    'adam': torch.optim.Adam, 
+    'adamax': torch.optim.Adamax,
+    'adadelta': torch.optim.Adadelta,
+}
+
+
 def train(model, train_loader, optimizer):
     model.train()
     if cfg.tqdm:
@@ -28,7 +38,7 @@ def train(model, train_loader, optimizer):
         else:
             if cfg.name.lower() == "googlenet":
                 final_output, aux2, aux1 = output
-                loss = criterion(final_output, label) + (0.35*criterion(aux1, label)) + (0.35*criterion(aux2, label))
+                loss = criterion(final_output, label) + (0.4*criterion(aux1, label)) + (0.4*criterion(aux2, label))
             elif cfg.name.lower() == "inception-v2":
                 final_output, aux = output
                 loss = criterion(final_output, label) + (0.5*criterion(aux, label))
@@ -39,6 +49,7 @@ def train(model, train_loader, optimizer):
         optimizer.step()
         if cfg.tqdm:
             tqdm_bar.set_description(f"Epoch {epoch+1} - train loss: {loss.item():.6f}")
+
 
 def evaluate(model, test_loader):
     model.eval()
@@ -107,7 +118,7 @@ if __name__ == "__main__":
     
     ## define training vars
     EPOCHS = cfg.epoch
-    optimizer = torch.optim.Adam(model.parameters(), lr=cfg.lr)
+    optimizer = OPTIMIZERS[cfg.optim](model.parameters(), lr=cfg.lr)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=cfg.factor)
     criterion = nn.CrossEntropyLoss(label_smoothing=cfg.label_smoothing)
     
