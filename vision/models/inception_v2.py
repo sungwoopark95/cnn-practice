@@ -20,14 +20,14 @@ class InceptionV2(nn.Module):
         
         conv1out, conv2out, conv3out, conv4out, conv5out = 32, 32, 64, 80, 192
         ch71, out71, out11 = 128, 128, 128
-        ch72, out72, out12 = 128, 192, 192
+        ch72, out72, out12 = 128, 128, 128
         ch73, out73, out13 = 128, 192, 192
-        ch31, ch32, out31, ch33, out32, out14, out15 = 64, 96, 96, 48, 64, 64, 64
+        ch31, ch32, out31, ch33, out32, out14, out15 = 64, 64, 64, 48, 64, 96, 96
         ch74, out74, out16 = 128, 128, 128
-        ch75, out75, out17 = 128, 192, 192
+        ch75, out75, out17 = 128, 128, 128
         ch76, out76, out18 = 128, 192, 192
         ch77, out77, out19 = 128, 192, 192
-        ch34, ch35, out33, ch36, out34, out20, out21 = 64, 96, 96, 48, 64, 64, 64
+        ch34, ch35, out33, ch36, out34, out20, out21 = 64, 64, 64, 48, 64, 96, 96
         ch37, ch38, out35, out36, out22, out23 = 384, 384, 384, 384, 256, 256
         
         self.conv1 = nn.Sequential(
@@ -63,9 +63,9 @@ class InceptionV2(nn.Module):
         self.inception4 = InceptionA(in_channels=(2*out73 + 2*out13), to3x3_1=ch31, to3x3_2=ch32, out3x3_1=out31, 
                                      to3x3_3=ch33, out3x3_2=out32, out1x1_1=out14, out1x1_2=out15)
         self.inception5 = InceptionB(in_channels=(out31+out32+out14+out15), ch7=ch74, out7=out74, out1=out16)
-        self.inception6 = InceptionB(in_channels=(2*out74 + 2*out16), ch7=ch75, out7=out75, out1=out17)
-        self.inception7 = InceptionB(in_channels=(2*out75 + 2*out17), ch7=ch76, out7=out76, out1=out18)
-        self.inception8 = InceptionB(in_channels=(2*out76 + 2*out18), ch7=ch77, out7=out77, out1=out19)
+        self.inception6 = InceptionD(in_channels=(2*out74 + 2*out16), ch7=ch75, out7=out75, out1=out17)
+        self.inception7 = InceptionD(in_channels=(2*out75 + 2*out17), ch7=ch76, out7=out76, out1=out18)
+        self.inception8 = InceptionD(in_channels=(2*out76 + 2*out18), ch7=ch77, out7=out77, out1=out19)
         
         if self.aux_logits:
             self.aux = InceptionAux(in_channels=(2*out77 + 2*out19), num_classes=num_classes)
@@ -288,6 +288,80 @@ class InceptionC(nn.Module):
         return torch.cat([branch1, branch2, branch3, branch4], dim=1)
     
 
+class InceptionD(nn.Module):
+    def __init__(self, in_channels, ch7, out7, out1):
+        super(InceptionD, self).__init__()
+        
+        self.branch1 = nn.Sequential(
+            nn.Conv2d(in_channels=in_channels, out_channels=ch7, kernel_size=1, padding='same'),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=ch7, out_channels=ch7, kernel_size=(1, 3), padding=(0, 1)),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=ch7, out_channels=ch7, kernel_size=(3, 1), padding=(1, 0)),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=ch7, out_channels=ch7, kernel_size=(1, 3), padding=(0, 1)),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=ch7, out_channels=ch7, kernel_size=(3, 1), padding=(1, 0)),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),            
+            nn.Conv2d(in_channels=ch7, out_channels=ch7, kernel_size=(1, 3), padding=(0, 1)),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=ch7, out_channels=ch7, kernel_size=(3, 1), padding=(1, 0)),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=ch7, out_channels=ch7, kernel_size=(1, 3), padding=(0, 1)),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=ch7, out_channels=out7, kernel_size=(3, 1), padding=(1, 0)),
+            nn.BatchNorm2d(num_features=out7),
+            nn.ReLU()
+        )
+        
+        self.branch2 = nn.Sequential(
+            nn.Conv2d(in_channels=in_channels, out_channels=ch7, kernel_size=1, padding='same'),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=ch7, out_channels=ch7, kernel_size=(1, 3), padding=(0, 1)),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=ch7, out_channels=ch7, kernel_size=(3, 1), padding=(1, 0)),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=ch7, out_channels=ch7, kernel_size=(1, 3), padding=(0, 1)),
+            nn.BatchNorm2d(num_features=ch7),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=ch7, out_channels=out7, kernel_size=(3, 1), padding=(1, 0)),
+            nn.BatchNorm2d(num_features=out7),
+            nn.ReLU()
+        )
+        
+        self.branch3 = nn.Sequential(
+            nn.AvgPool2d(kernel_size=3, stride=1, padding=1),
+            nn.Conv2d(in_channels=in_channels, out_channels=out1, kernel_size=1, padding='same'),
+            nn.BatchNorm2d(num_features=out1),
+            nn.ReLU()
+        )
+        
+        self.branch4 = nn.Sequential(
+            nn.Conv2d(in_channels=in_channels, out_channels=out1, kernel_size=1, padding='same'),
+            nn.BatchNorm2d(num_features=out1),
+            nn.ReLU()
+        )
+        
+    def forward(self, x):
+        branch1 = self.branch1(x)
+        branch2 = self.branch2(x)
+        branch3 = self.branch3(x)
+        branch4 = self.branch4(x)
+        
+        return torch.cat([branch1, branch2, branch3, branch4], dim=1)
+    
+    
 class InceptionAux(nn.Module):
     def __init__(self, in_channels, num_classes):
         super(InceptionAux, self).__init__()
