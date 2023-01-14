@@ -4,6 +4,7 @@ from .vgg import VGG
 from .vgg19 import VGG19
 from .googlenet import GoogLeNet
 from .inception_v2 import InceptionV2
+from .resnet import ResNet
 
 METHOD_DICT = {
     "alexnet": AlexNet,
@@ -12,6 +13,7 @@ METHOD_DICT = {
     "vgg19": VGG19,
     "googlenet": GoogLeNet,
     "inception-v2": InceptionV2,
+    "resnet": ResNet,
 }
 
 def get_model(name):

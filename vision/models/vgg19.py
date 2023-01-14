@@ -140,10 +140,8 @@ class VGG19(nn.Module):
         x = F.relu(self.conv_bn16(x))
         x = self.pool5(x)
         
-        num_feat = x.size(1) * x.size(2) * x.size(3)
-        
         ## head
-        x = x.view(-1, num_feat)
+        x = x.view(-1, self.num_feat)
         x = self.fc1(x)
         x = F.relu(self.fc_bn1(x))
         x = self.dropout(x)

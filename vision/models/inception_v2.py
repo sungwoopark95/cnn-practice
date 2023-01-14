@@ -18,16 +18,16 @@ class InceptionV2(nn.Module):
         elif cfg.dataset == "imagenet":
             num_classes = 1000
         
-        conv1out, conv2out, conv3out, conv4out, conv5out = 32, 32, 64, 80, 192
+        conv1out, conv2out, conv3out, conv4out, conv5out = 64, 64, 64, 96, 192
         ch71, out71, out11 = 128, 128, 128
         ch72, out72, out12 = 128, 128, 128
         ch73, out73, out13 = 128, 192, 192
-        ch31, ch32, out31, ch33, out32, out14, out15 = 64, 64, 64, 48, 64, 96, 96
+        ch31, ch32, out31, ch33, out32, out14, out15 = 64, 64, 64, 64, 48, 96, 96
         ch74, out74, out16 = 128, 128, 128
         ch75, out75, out17 = 128, 128, 128
         ch76, out76, out18 = 128, 192, 192
         ch77, out77, out19 = 128, 192, 192
-        ch34, ch35, out33, ch36, out34, out20, out21 = 64, 64, 64, 48, 64, 96, 96
+        ch34, ch35, out33, ch36, out34, out20, out21 = 64, 64, 64, 64, 48, 96, 96
         ch37, ch38, out35, out36, out22, out23 = 384, 384, 384, 384, 256, 256
         
         self.conv1 = nn.Sequential(
