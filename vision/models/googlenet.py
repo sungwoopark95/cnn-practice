@@ -22,13 +22,13 @@ class GoogLeNet(nn.Module):
             
         self.aux_logits = aux_logits
         
-        outfeat1, outfeat2, outfeat3 = 256, 256, 512
+        outfeat1, outfeat2, outfeat3 = 256, 384, 512
         out11, out12, out13, out14, out15, out16, out17, out18, out19 = 256, 256, 384, 384, 384, 512, 512, 512, 512
         to31, to32, to33, to34, to35, to36, to37, to38, to39 = 256, 256, 256, 384, 384, 384, 512, 512, 512
         out31, out32, out33, out34, out35, out36, out37, out38, out39 = 384, 384, 384, 512, 512, 512, 1024, 1024, 1024
-        to51, to52, to53, to54, to55, to56, to57, to58, to59 = 96, 96, 96, 128, 128, 128, 256, 256, 256
+        to51, to52, to53, to54, to55, to56, to57, to58, to59 = 128, 128, 128, 192, 192, 192, 256, 256, 256
         out51, out52, out53, out54, out55, out56, out57, out58, out59 = 384, 384, 384, 512, 512, 512, 768, 768, 768
-        outpool1, outpool2, outpool3, outpool4, outpool5, outpool6, outpool7, outpool8, outpool9 = 64, 64, 96, 96, 96, 128, 128, 128, 128 
+        outpool1, outpool2, outpool3, outpool4, outpool5, outpool6, outpool7, outpool8, outpool9 = 96, 96, 128, 128, 128, 128, 192, 192, 192 
         
         self.conv1 = nn.Sequential(
             nn.Conv2d(in_channels=3, out_channels=outfeat1, kernel_size=7, stride=2, padding=3),

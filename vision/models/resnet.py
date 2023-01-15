@@ -20,11 +20,11 @@ class ResNet(nn.Module):
                  96, 128, 192, 256, 384, 
                  512, 768, 1024, 1536, 2048]
         
-        feat1 = feats[4]
-        feat2, feat3, feat4, feat5, feat6, feat7, feat8 = [feats[4] for _ in range(2, 8+1)] # 64
-        feat9, feat10, feat11, feat12, feat13, feat14, feat15, feat16 = [feats[6] for _ in range(9, 16+1)] # 128
-        feat17, feat18, feat19, feat20, feat21, feat22, feat23, feat24, feat25, feat26 = [feats[8] for _ in range(17, 26+1)] # 256
-        feat27, feat28, feat29, feat30, feat31, feat32 = [feats[10] for _ in range(27, 32+1)] # 512
+        feat1 = 64
+        feat2, feat3, feat4, feat5, feat6, feat7, feat8 = 128, 128, 128, 160, 160, 160, 160
+        feat9, feat10, feat11, feat12, feat13, feat14, feat15, feat16 = 192, 192, 192, 192, 256, 256, 256, 256
+        feat17, feat18, feat19, feat20, feat21, feat22, feat23, feat24, feat25, feat26 = 384, 384, 384, 384, 384, 512, 512, 512, 512, 512
+        feat27, feat28, feat29, feat30, feat31 = 512, 512, 1024, 1024, 1024
         
         self.conv1 = nn.Sequential(
             nn.Conv2d(in_channels=3, out_channels=feat1, kernel_size=7, stride=2, padding=3, bias=False),
@@ -33,33 +33,35 @@ class ResNet(nn.Module):
         )
         self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2)
         
-        self.res1 = ResBlock(in_channels=feat2, intermediate=feat3, out_channels=feat4)
-        self.res2 = ResBlock(in_channels=feat4, intermediate=feat5, out_channels=feat6)
-        self.res3 = ResBlock(in_channels=feat6, intermediate=feat7, out_channels=feat8)
+        self.res1 = ResBlock(in_channels=feat1, intermediate=feat2, out_channels=feat3)
+        self.res2 = ResBlock(in_channels=feat3, intermediate=feat4, out_channels=feat5)
+        self.res3 = ResBlock(in_channels=feat5, intermediate=feat6, out_channels=feat7)
         self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2)
         
-        self.res4 = ResBlock(in_channels=feat8, intermediate=feat9, out_channels=feat10)
-        self.res5 = ResBlock(in_channels=feat10, intermediate=feat11, out_channels=feat12)
-        self.res6 = ResBlock(in_channels=feat12, intermediate=feat13, out_channels=feat14)
-        self.res7 = ResBlock(in_channels=feat14, intermediate=feat15, out_channels=feat16)
+        self.res4 = ResBlock(in_channels=feat7, intermediate=feat8, out_channels=feat9)
+        self.res5 = ResBlock(in_channels=feat9, intermediate=feat10, out_channels=feat11)
+        self.res6 = ResBlock(in_channels=feat11, intermediate=feat12, out_channels=feat13)
+        self.res7 = ResBlock(in_channels=feat13, intermediate=feat14, out_channels=feat15)
         self.pool3 = nn.MaxPool2d(kernel_size=2, stride=2)
 
-        self.res8 = ResBlock(in_channels=feat16, intermediate=feat17, out_channels=feat18)
-        self.res9 = ResBlock(in_channels=feat18, intermediate=feat19, out_channels=feat20)
-        self.res10 = ResBlock(in_channels=feat20, intermediate=feat21, out_channels=feat22)
-        self.res11 = ResBlock(in_channels=feat22, intermediate=feat23, out_channels=feat24)
-        self.res12 = ResBlock(in_channels=feat24, intermediate=feat25, out_channels=feat26)
+        self.res8 = ResBlock(in_channels=feat15, intermediate=feat16, out_channels=feat17)
+        self.res9 = ResBlock(in_channels=feat17, intermediate=feat18, out_channels=feat19)
+        self.res10 = ResBlock(in_channels=feat19, intermediate=feat20, out_channels=feat21)
+        self.res11 = ResBlock(in_channels=feat21, intermediate=feat22, out_channels=feat23)
+        self.res12 = ResBlock(in_channels=feat23, intermediate=feat24, out_channels=feat25)
         self.pool4 = nn.MaxPool2d(kernel_size=2, stride=2)
         
-        self.res13 = ResBlock(in_channels=feat26, intermediate=feat27, out_channels=feat28)
-        self.res14 = ResBlock(in_channels=feat28, intermediate=feat29, out_channels=feat30)
-        self.res15 = ResBlock(in_channels=feat30, intermediate=feat31, out_channels=feat32)
+        self.res13 = ResBlock(in_channels=feat25, intermediate=feat26, out_channels=feat27)
+        self.res14 = ResBlock(in_channels=feat27, intermediate=feat28, out_channels=feat29)
+        self.res15 = ResBlock(in_channels=feat29, intermediate=feat30, out_channels=feat31)
         self.pool5 = nn.MaxPool2d(kernel_size=2, stride=2)
         
         self.avgpool = nn.AdaptiveAvgPool2d(output_size=(1, 1))
         self.dropout = nn.Dropout(p=cfg.drop_fc)
-        self.fc1 = nn.Linear(feat32, out_features=cfg.head_fc1)
-        self.fc2 = nn.Linear(cfg.head_fc1, out_features=num_classes)
+        
+        self.fc = nn.Linear(feat31, out_features=num_classes)
+        # self.fc1 = nn.Linear(feat31, out_features=cfg.head_size1)
+        # self.fc2 = nn.Linear(cfg.head_size1, out_features=num_classes)
             
     def forward(self, x):
         x = self.conv1(x)
@@ -91,9 +93,11 @@ class ResNet(nn.Module):
         ## head
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
-        x = self.fc1(x)
         x = self.dropout(x)
-        x = self.fc2(x)
+        x = self.fc(x)
+        # x = self.fc1(x)
+        # x = self.dropout(x)
+        # x = self.fc2(x)
         
         return x
     
@@ -129,7 +133,7 @@ class ResBlock(nn.Module):
         )
         
         self.downsample = nn.Sequential(
-            nn.conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=1, bias=False),
+            nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=1, bias=False),
             nn.BatchNorm2d(num_features=out_channels)
         )
 

@@ -20,8 +20,8 @@ class VGG19(nn.Module):
                  96, 128, 192, 256, 384, 
                  512, 768, 1024, 1536, 2048]
         
-        feat1 = feats[4]
-        feat2 = feats[4]
+        feat1 = feats[6]
+        feat2 = feats[6]
          
         feat3 = feats[6] 
         feat4 = feats[6]
