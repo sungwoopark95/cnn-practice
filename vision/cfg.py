@@ -12,6 +12,8 @@ def get_cfg():
     parser.add_argument("--google_modified", type=bool, default=True)
     parser.add_argument("--label_smoothing", type=float, default=0.0)
     parser.add_argument("--use_wandb", action="store_true")
+    parser.add_argument("--shortcut", type=bool, default=True)
+    parser.add_argument("--multihead", action='store_true')
     
     ## arguments for data augmentation
     augarg = partial(parser.add_argument, type=float)
@@ -22,7 +24,8 @@ def get_cfg():
     augarg("--ro_a", default=15, help="Rotation angle")
     
     parser.add_argument("--lr", type=float, default=1e-3, help="Learning rate")
-    parser.add_argument("--optim", choices=['sgd', 'rmsprop', 'adagrad', 'adam', 'adamax', 'adadelta'], default='adam', help="Optimizers")
+    parser.add_argument("--optim", choices=['sgd', 'rmsprop', 'adagrad', 'adam', 'adamax', 'adadelta'], 
+                        default='adam', help="Optimizers")
     parser.add_argument("--factor", type=float, default=0.1, help="Scheduler factor")
     
     ## arguments for feature map
