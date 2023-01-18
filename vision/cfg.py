@@ -14,6 +14,7 @@ def get_cfg():
     parser.add_argument("--use_wandb", action="store_true")
     parser.add_argument("--shortcut", type=bool, default=True)
     parser.add_argument("--multihead", action='store_true')
+    parser.add_argument("--save_model", action='store_true')
     
     ## arguments for data augmentation
     augarg = partial(parser.add_argument, type=float)

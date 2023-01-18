@@ -38,10 +38,10 @@ def train(model, train_loader, optimizer):
         else:
             if cfg.name.lower() == "googlenet":
                 final_output, aux2, aux1 = output
-                loss = criterion(final_output, label) + (0.4*criterion(aux1, label)) + (0.4*criterion(aux2, label))
+                loss = criterion(final_output, label) + (0.3*criterion(aux1, label)) + (0.3*criterion(aux2, label))
             elif cfg.name.lower() == "inception-v2":
                 final_output, aux = output
-                loss = criterion(final_output, label) + (0.5*criterion(aux, label))
+                loss = criterion(final_output, label) + (0.3*criterion(aux, label))
             else:
                 loss = criterion(output, label)
             
@@ -138,19 +138,20 @@ if __name__ == "__main__":
         losses[epoch] = test_loss
         
         ## save point
-        if max_acc < accs[epoch]:
-            max_acc = accs[epoch]
-            saved_model = model.state_dict()
-            fname = f"./saved_models/{cfg.dataset}_{model_name}_{cfg.bs}.pt"
-            save_epoch = epoch + 1
-        else:
-            torch.save(saved_model, fname)
-            print(f"Model save at epoch {save_epoch}")
-        
-        if cfg.use_wandb:
-            wandb.log({"acc": test_accuracy}, commit=False)
-            wandb.log({"loss": test_loss})
-        scheduler.step(test_loss)
+        if cfg.save_model:
+            if max_acc < accs[epoch]:
+                max_acc = accs[epoch]
+                saved_model = model.state_dict()
+                fname = f"./saved_models/{cfg.dataset}_{model_name}_{cfg.bs}.pt"
+                save_epoch = epoch + 1
+            else:
+                torch.save(saved_model, fname)
+                print(f"Model save at epoch {save_epoch}")
+            
+            if cfg.use_wandb:
+                wandb.log({"acc": test_accuracy}, commit=False)
+                wandb.log({"loss": test_loss})
+            scheduler.step(test_loss)
         
     ## plot save
     if cfg.save_plot:
