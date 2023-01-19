@@ -133,7 +133,7 @@ if __name__ == "__main__":
     for epoch in range(EPOCHS):
         train(model, train_loader, optimizer)
         test_loss, test_accuracy = evaluate(model, test_loader)
-        print(f"\n[EPOCH: {epoch+1}], \tModel: {model_name}, \tTest Loss: {test_loss:.4f}, \tTest Accuracy: {test_accuracy * 100:.2f} % \n")
+        print(f"\n[EPOCH: {epoch+1}], \tModel: {model_name}, \tTest Loss: {test_loss:.4f}, \tTest Accuracy: {test_accuracy * 100:.2f}%, ", end='')
         accs[epoch] = test_accuracy
         losses[epoch] = test_loss
         
@@ -153,6 +153,7 @@ if __name__ == "__main__":
             wandb.log({"loss": test_loss})
         
         scheduler.step(test_loss)
+        print(f"\tLast LR: {scheduler.state_dict()['_last_lr'][0]} \n")
         
     ## plot save
     if cfg.save_plot:
