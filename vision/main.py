@@ -147,13 +147,14 @@ if __name__ == "__main__":
             else:
                 torch.save(saved_model, fname)
                 print(f"Model save at epoch {save_epoch}")
-            
+        
+        scheduler.step(test_loss)
+        print(f"\tLast LR: {scheduler.state_dict()['_last_lr'][-1]} \n")
+        
         if cfg.use_wandb:
             wandb.log({"acc": test_accuracy}, commit=False)
             wandb.log({"loss": test_loss})
-        
-        scheduler.step(test_loss)
-        print(f"\tLast LR: {scheduler.state_dict()['_last_lr'][0]} \n")
+            wandb.log({"learning rate": scheduler.state_dict()['_last_lr'][-1]})
         
     ## plot save
     if cfg.save_plot:
