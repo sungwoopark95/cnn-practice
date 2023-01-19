@@ -148,10 +148,11 @@ if __name__ == "__main__":
                 torch.save(saved_model, fname)
                 print(f"Model save at epoch {save_epoch}")
             
-            if cfg.use_wandb:
-                wandb.log({"acc": test_accuracy}, commit=False)
-                wandb.log({"loss": test_loss})
-            scheduler.step(test_loss)
+        if cfg.use_wandb:
+            wandb.log({"acc": test_accuracy}, commit=False)
+            wandb.log({"loss": test_loss})
+        
+        scheduler.step(test_loss)
         
     ## plot save
     if cfg.save_plot:
