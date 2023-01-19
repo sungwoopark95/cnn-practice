@@ -119,7 +119,7 @@ if __name__ == "__main__":
     ## define training vars
     EPOCHS = cfg.epoch
     optimizer = OPTIMIZERS[cfg.optim](model.parameters(), lr=cfg.lr)
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=cfg.factor)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=cfg.factor, patience=cfg.patience)
     criterion = nn.CrossEntropyLoss(label_smoothing=cfg.label_smoothing)
     
     ## training

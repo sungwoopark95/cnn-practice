@@ -8,17 +8,13 @@ cfg = get_cfg()
 class ResNet(nn.Module):
     def __init__(self):        
         super(ResNet, self).__init__()
+        
         if cfg.dataset == "cifar10":
             num_classes = 10
         elif cfg.dataset == "cifar100":
             num_classes = 100
         elif cfg.dataset == "imagenet":
             num_classes = 1000
-        
-        ## from 4 ~ 2048
-        feats = [4, 8, 16, 32, 64, 
-                 96, 128, 192, 256, 384, 
-                 512, 768, 1024, 1536, 2048]
         
         feat1 = 96
         feat2, feat3, feat4, feat5, feat6, feat7, feat8 = 96, 96, 96, 96, 96, 96, 96
@@ -32,7 +28,10 @@ class ResNet(nn.Module):
         feat301, feat311 = 1024, 1024
         
         self.conv1 = nn.Sequential(
-            nn.Conv2d(in_channels=3, out_channels=feat1, kernel_size=7, stride=2, padding=3, bias=False),
+            nn.Conv2d(in_channels=3, out_channels=feat1, kernel_size=3, stride=2, padding=1, bias=False),
+            nn.BatchNorm2d(num_features=feat1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=feat1, out_channels=feat1, kernel_size=3, stride=1, padding=1, bias=False),
             nn.BatchNorm2d(num_features=feat1),
             nn.ReLU()
         )
@@ -86,14 +85,14 @@ class ResNet(nn.Module):
         x = self.res1(x)
         x = self.res2(x)
         x = self.res3(x)
-        x = self.res31(x)
+        # x = self.res31(x)
         x = self.pool2(x)
         
         x = self.res4(x)
         x = self.res5(x)
         x = self.res6(x)
         x = self.res7(x)
-        x = self.res71(x)
+        # x = self.res71(x)
         x = self.pool3(x)
         
         x = self.res8(x)
@@ -101,13 +100,13 @@ class ResNet(nn.Module):
         x = self.res10(x)
         x = self.res11(x)
         x = self.res12(x)
-        x = self.res121(x)
+        # x = self.res121(x)
         x = self.pool4(x)
         
         x = self.res13(x)
         x = self.res14(x)
         x = self.res15(x)
-        x = self.res151(x)
+        # x = self.res151(x)
         x = self.pool5(x)
         
         ## head
