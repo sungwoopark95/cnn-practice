@@ -8,6 +8,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
+from torchinfo import summary
 from models import get_model
 
 
@@ -122,6 +123,13 @@ if __name__ == "__main__":
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=cfg.factor, patience=cfg.patience)
     criterion = nn.CrossEntropyLoss(label_smoothing=cfg.label_smoothing)
     
+    ## print model info
+    model_summary = summary(
+            model=model, 
+            verbose=1 # 0 : no output / 1 : print model summary / 2 : full detail(weight, bias layers)
+    )
+    print(model_summary)
+    
     ## training
     accs = np.zeros(shape=EPOCHS)
     losses = np.zeros(shape=EPOCHS)
@@ -152,9 +160,7 @@ if __name__ == "__main__":
         print(f"\tLast LR: {scheduler.state_dict()['_last_lr'][-1]} \n")
         
         if cfg.use_wandb:
-            wandb.log({"acc": test_accuracy}, commit=False)
-            wandb.log({"loss": test_loss})
-            wandb.log({"learning rate": scheduler.state_dict()['_last_lr'][-1]})
+            wandb.log({"acc": test_accuracy, "loss": test_loss, "learning rate": scheduler.state_dict()['_last_lr'][-1]})
         
     ## plot save
     if cfg.save_plot:
@@ -171,4 +177,4 @@ if __name__ == "__main__":
         plt.grid(True)
         
         plt.tight_layout()
-        plt.savefig(f"plots/{cfg.dataset}_{model_name}_{cfg.bs}.png")
+        plt.savefig(f"./plots/{cfg.dataset}_{model_name}_{cfg.bs}.png")

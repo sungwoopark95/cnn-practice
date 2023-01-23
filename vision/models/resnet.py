@@ -17,24 +17,31 @@ class ResNet(nn.Module):
             num_classes = 1000
         
         feat1 = 96
-        feat2, feat3, feat4, feat5, feat6, feat7, feat8 = 96, 96, 96, 96, 96, 96, 96
-        feat9, feat10, feat11, feat12, feat13, feat14, feat15, feat16 = 192, 192, 192, 192, 192, 192, 192, 192
+        feat2, feat3, feat4, feat5, feat6, feat7, feat8 = 128, 128, 128, 128, 128, 128, 128
+        feat9, feat10, feat11, feat12, feat13, feat14, feat15, feat16 = 256, 256, 256, 256, 256, 256, 256, 256
         feat17, feat18, feat19, feat20, feat21, feat22, feat23, feat24, feat25, feat26 = 384, 384, 384, 384, 384, 512, 512, 512, 512, 512
-        feat27, feat28, feat29, feat30, feat31 = 1024, 1024, 1024, 1024, 1024
+        feat27, feat28, feat29, feat30, feat31 = 512, 512, 512, 512, 512
         
-        feat61, feat71 = 96, 96
-        feat141, feat151 = 192, 192
+        feat61, feat71 = 128, 128
+        feat141, feat151 = 256, 256
         feat241, feat251 = 512, 512
         feat301, feat311 = 1024, 1024
         
-        self.conv1 = nn.Sequential(
-            nn.Conv2d(in_channels=3, out_channels=feat1, kernel_size=3, stride=2, padding=1, bias=False),
-            nn.BatchNorm2d(num_features=feat1),
-            nn.ReLU(),
-            nn.Conv2d(in_channels=feat1, out_channels=feat1, kernel_size=3, stride=1, padding=1, bias=False),
-            nn.BatchNorm2d(num_features=feat1),
-            nn.ReLU()
-        )
+        if cfg.decompose:
+            self.conv1 = nn.Sequential(
+                nn.Conv2d(in_channels=3, out_channels=feat1, kernel_size=3, stride=2, padding=1, bias=False),
+                nn.BatchNorm2d(num_features=feat1),
+                nn.ReLU(),
+                nn.Conv2d(in_channels=feat1, out_channels=feat1, kernel_size=3, stride=1, padding=1, bias=False),
+                nn.BatchNorm2d(num_features=feat1),
+                nn.ReLU()
+            )
+        else:
+            self.conv1 = nn.Sequential(
+                nn.Conv2d(in_channels=3, out_channels=feat1, kernel_size=7, stride=2, padding=3, bias=False),
+                nn.BatchNorm2d(num_features=feat1),
+                nn.ReLU()
+            )
         self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2)
         
         self.res1 = ResBlock(in_channels=feat1, intermediate=feat2, out_channels=feat3)
@@ -61,21 +68,21 @@ class ResNet(nn.Module):
         self.res13 = ResBlock(in_channels=feat251, intermediate=feat26, out_channels=feat27, shortcut=cfg.shortcut)
         self.res14 = ResBlock(in_channels=feat27, intermediate=feat28, out_channels=feat29)
         self.res15 = ResBlock(in_channels=feat29, intermediate=feat30, out_channels=feat31)
-        self.res151 = ResBlock(in_channels=feat31, intermediate=feat301, out_channels=feat311)
+        # self.res151 = ResBlock(in_channels=feat31, intermediate=feat301, out_channels=feat311)
         self.pool5 = nn.MaxPool2d(kernel_size=2, stride=2)
         
         self.avgpool = nn.AdaptiveAvgPool2d(output_size=(1, 1))
         
         if cfg.multihead:
             self.fc = nn.Sequential(
-                nn.Linear(feat311, out_features=cfg.head_size1),
+                nn.Linear(feat31, out_features=cfg.head_size1),
                 nn.Dropout(p=cfg.drop_fc),
                 nn.Linear(cfg.head_size1, out_features=num_classes)
             )
         else:
             self.fc = nn.Sequential(
                 nn.Dropout(p=cfg.drop_fc),
-                nn.Linear(feat311, out_features=num_classes)
+                nn.Linear(feat31, out_features=num_classes)
             )
             
     def forward(self, x):
@@ -85,14 +92,14 @@ class ResNet(nn.Module):
         x = self.res1(x)
         x = self.res2(x)
         x = self.res3(x)
-        # x = self.res31(x)
+        x = self.res31(x)
         x = self.pool2(x)
         
         x = self.res4(x)
         x = self.res5(x)
         x = self.res6(x)
         x = self.res7(x)
-        # x = self.res71(x)
+        x = self.res71(x)
         x = self.pool3(x)
         
         x = self.res8(x)
@@ -100,7 +107,7 @@ class ResNet(nn.Module):
         x = self.res10(x)
         x = self.res11(x)
         x = self.res12(x)
-        # x = self.res121(x)
+        x = self.res121(x)
         x = self.pool4(x)
         
         x = self.res13(x)

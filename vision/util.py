@@ -49,6 +49,10 @@ class CustomDataset(Dataset):
         elif cfg.dataset == "cifar100":
             self.data = datasets.CIFAR100(root=data_dir, train=train, download=True)
         elif cfg.dataset == "imagenet":
+            if train:
+                train = 'train'
+            else:
+                train = 'test'
             self.data = datasets.ImageNet(root=data_dir, train=train, download=True)
         self.prob = prob
 
