@@ -37,7 +37,7 @@ def train(model, train_loader, optimizer):
         if not cfg.aux:
             loss = criterion(output, label)
         else:
-            if cfg.name.lower() == "googlenet":
+            if cfg.name.lower() in ["googlenet", "googleresnet"]:
                 final_output, aux2, aux1 = output
                 loss = criterion(final_output, label) + (0.3*criterion(aux1, label)) + (0.3*criterion(aux2, label))
             elif cfg.name.lower() == "inception-v2":
