@@ -16,13 +16,23 @@ class GoogLeResNet(nn.Module):
             
         self.aux_logits = aux_logits
         
-        outfeat1, outfeat2, outfeat3 = 256, 256, 256
-        out11, out12, out13, out14, out15, out16, out17, out18, out19 = 256, 256, 256, 256, 256, 256, 256, 256, 256
-        to31, to32, to33, to34, to35, to36, to37, to38, to39 = 384, 384, 384, 384, 384, 384, 384, 384, 384
-        out31, out32, out33, out34, out35, out36, out37, out38, out39 = 512, 512, 512, 512, 512, 512, 512, 512, 512
-        to51, to52, to53, to54, to55, to56, to57, to58, to59 = 256, 256, 256, 256, 256, 256, 256, 256, 256
-        out51, out52, out53, out54, out55, out56, out57, out58, out59 = 256, 256, 256, 384, 384, 384, 512, 512, 512
-        outpool1, outpool2, outpool3, outpool4, outpool5, outpool6, outpool7, outpool8, outpool9 = 192, 192, 192, 192, 192, 192, 192, 192, 192 
+        outfeat1, outfeat2, itm, outfeat3 = 64, 128, 128, 256
+        out11, out31, out51, outpool1, to31, to51 = 112, 112, 112, 112, 96, 96
+        out12, out32, out52, outpool2, to32, to52 = 112, 112, 112, 112, 96, 96
+        out13, out33, out53, outpool3, to33, to53 = 112, 112, 112, 112, 96, 96
+        out14, out34, out54, outpool4, to34, to54 = 128, 128, 128, 128, 128, 128
+        out15, out35, out55, outpool5, to35, to55 = 128, 128, 128, 128, 128, 128
+        out16, out36, out56, outpool6, to36, to56 = 128, 128, 128, 128, 128, 128
+        out17, out37, out57, outpool7, to37, to57 = 128, 128, 128, 128, 128, 128
+        out18, out38, out58, outpool8, to38, to58 = 192, 192, 192, 192, 160, 160
+        out19, out39, out59, outpool9, to39, to59 = 192, 192, 192, 192, 160, 160
+        out10, out30, out50, outpool0, to30, to50 = 192, 192, 192, 192, 160, 160
+        out1a, out3a, out5a, outpoola, to3a, to5a = 192, 192, 192, 192, 160, 160
+        out1b, out3b, out5b, outpoolb, to3b, to5b = 256, 256, 256, 256, 192, 192
+        out1c, out3c, out5c, outpoolc, to3c, to5c = 256, 256, 256, 256, 192, 192
+        out1d, out3d, out5d, outpoold, to3d, to5d = 256, 256, 256, 256, 192, 192
+        out1e, out3e, out5e, outpoole, to3e, to5e = 256, 256, 256, 256, 192, 192
+        out1f, out3f, out5f, outpoolf, to3f, to5f = 256, 256, 256, 256, 192, 192
         
         self.conv1 = nn.Sequential(
             nn.Conv2d(in_channels=3, out_channels=outfeat1, kernel_size=7, stride=2, padding=3),
@@ -34,7 +44,7 @@ class GoogLeResNet(nn.Module):
             nn.BatchNorm2d(outfeat2),
             nn.ReLU()
         )
-        self.res1 = ResBlock(in_channels=outfeat2, intermediate=outfeat3, out_channels=outfeat3)
+        self.res1 = ResBlock(in_channels=outfeat2, intermediate=itm, out_channels=outfeat3)
         
         self.inception1 = Inception(in_channels=outfeat3, out1x1=out11, to3x3=to31, out3x3=out31, to5x5=to51, out5x5=out51, poolout=outpool1, modified=cfg.google_modified)
         self.inception2 = Inception(in_channels=out11+out31+out51+outpool1, out1x1=out12, to3x3=to32, out3x3=out32, to5x5=to52, out5x5=out52, poolout=outpool2, modified=cfg.google_modified)
@@ -45,10 +55,17 @@ class GoogLeResNet(nn.Module):
         self.inception7 = Inception(in_channels=out16+out36+out56+outpool6, out1x1=out17, to3x3=to37, out3x3=out37, to5x5=to57, out5x5=out57, poolout=outpool7, modified=cfg.google_modified)
         self.inception8 = Inception(in_channels=out17+out37+out57+outpool7, out1x1=out18, to3x3=to38, out3x3=out38, to5x5=to58, out5x5=out58, poolout=outpool8, modified=cfg.google_modified)
         self.inception9 = Inception(in_channels=out18+out38+out58+outpool8, out1x1=out19, to3x3=to39, out3x3=out39, to5x5=to59, out5x5=out59, poolout=outpool9, modified=cfg.google_modified)
+        self.inception0 = Inception(in_channels=out19+out39+out59+outpool9, out1x1=out10, to3x3=to30, out3x3=out30, to5x5=to50, out5x5=out50, poolout=outpool0, modified=cfg.google_modified)
+        self.inceptiona = Inception(in_channels=out10+out30+out50+outpool0, out1x1=out1a, to3x3=to3a, out3x3=out3a, to5x5=to5a, out5x5=out5a, poolout=outpoola, modified=cfg.google_modified)
+        self.inceptionb = Inception(in_channels=out1a+out3a+out5a+outpoola, out1x1=out1b, to3x3=to3b, out3x3=out3b, to5x5=to5b, out5x5=out5b, poolout=outpoolb, modified=cfg.google_modified)
+        self.inceptionc = Inception(in_channels=out1b+out3b+out5b+outpoolb, out1x1=out1c, to3x3=to3c, out3x3=out3c, to5x5=to5c, out5x5=out5c, poolout=outpoolc, modified=cfg.google_modified)
+        self.inceptiond = Inception(in_channels=out1c+out3c+out5c+outpoolc, out1x1=out1d, to3x3=to3d, out3x3=out3d, to5x5=to5d, out5x5=out5d, poolout=outpoold, modified=cfg.google_modified)
+        self.inceptione = Inception(in_channels=out1d+out3d+out5d+outpoold, out1x1=out1e, to3x3=to3e, out3x3=out3e, to5x5=to5e, out5x5=out5e, poolout=outpoole, modified=cfg.google_modified)
+        self.inceptionf = Inception(in_channels=out1e+out3e+out5e+outpoole, out1x1=out1f, to3x3=to3f, out3x3=out3f, to5x5=to5f, out5x5=out5f, poolout=outpoolf, modified=cfg.google_modified)
         
         if aux_logits:
-            self.aux1 = InceptionAux(in_channels=out13+out33+out53+outpool3, num_classes=num_classes)
-            self.aux2 = InceptionAux(in_channels=out16+out36+out56+outpool6, num_classes=num_classes)
+            self.aux1 = InceptionAux(in_channels=out16+out36+out56+outpool6, num_classes=num_classes)
+            self.aux2 = InceptionAux(in_channels=out10+out30+out50+outpool0, num_classes=num_classes)
         else:
             self.aux1 = None
             self.aux2 = None
@@ -59,8 +76,20 @@ class GoogLeResNet(nn.Module):
         self.maxpool4 = nn.MaxPool2d(2, stride=2, ceil_mode=True)
         
         self.avgpool = nn.AdaptiveAvgPool2d([1, 1])
-        self.dropout = nn.Dropout(p=cfg.drop_fc)
-        self.fc = nn.Linear(out19+out39+out59+outpool9, num_classes)
+        
+        if cfg.multihead:
+            self.fc = nn.Sequential(
+                nn.Linear(out1f+out3f+out5f+outpoolf, cfg.head_size1),
+                nn.BatchNorm1d(num_features=cfg.head_size1),
+                nn.ReLU(),
+                nn.Dropout(p=cfg.drop_fc),
+                nn.Linear(cfg.head_size1, num_classes)
+            )
+        else:
+            self.fc = nn.Sequential(
+                nn.Dropout(p=cfg.drop_fc),
+                nn.Linear(out1f+out3f+out5f+outpoolf, num_classes),
+            )
         
     def forward(self, x):
         x = self.conv1(x)
@@ -72,27 +101,33 @@ class GoogLeResNet(nn.Module):
         
         x = self.inception1(x)
         x = self.inception2(x)
-        x = self.maxpool3(x)
         x = self.inception3(x)
+        x = self.maxpool3(x)
+        x = self.inception4(x)
+        x = self.inception5(x)
+        x = self.inception6(x)
         if self.aux1 is not None:
             if self.training:
                 aux1 = self.aux1(x)
                 
-        x = self.inception4(x)
-        x = self.inception5(x)
-        x = self.inception6(x)
+        x = self.inception7(x)
+        x = self.inception8(x)
+        x = self.inception9(x)
+        x = self.inception0(x)
         if self.aux2 is not None:
             if self.training:
                 aux2 = self.aux2(x)
                 
-        x = self.inception7(x)
+        x = self.inceptiona(x)
+        x = self.inceptionb(x)
+        x = self.inceptionc(x)
         x = self.maxpool4(x)
-        x = self.inception8(x)
-        x = self.inception9(x)
+        x = self.inceptiond(x)
+        x = self.inceptione(x)
+        x = self.inceptionf(x)
         x = self.avgpool(x)
         
         x = torch.flatten(x, 1)
-        x = self.dropout(x)
         x = self.fc(x)
         
         if self.training and self.aux_logits:
