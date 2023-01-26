@@ -16,23 +16,23 @@ class GoogLeResNet(nn.Module):
             
         self.aux_logits = aux_logits
         
-        outfeat1, outfeat2, itm, outfeat3 = 64, 128, 128, 256
-        out11, out31, out51, outpool1, to31, to51 = 112, 112, 112, 112, 96, 96
-        out12, out32, out52, outpool2, to32, to52 = 112, 112, 112, 112, 96, 96
-        out13, out33, out53, outpool3, to33, to53 = 112, 112, 112, 112, 96, 96
-        out14, out34, out54, outpool4, to34, to54 = 128, 128, 128, 128, 128, 128
-        out15, out35, out55, outpool5, to35, to55 = 128, 128, 128, 128, 128, 128
-        out16, out36, out56, outpool6, to36, to56 = 128, 128, 128, 128, 128, 128
-        out17, out37, out57, outpool7, to37, to57 = 128, 128, 128, 128, 128, 128
-        out18, out38, out58, outpool8, to38, to58 = 192, 192, 192, 192, 160, 160
-        out19, out39, out59, outpool9, to39, to59 = 192, 192, 192, 192, 160, 160
-        out10, out30, out50, outpool0, to30, to50 = 192, 192, 192, 192, 160, 160
-        out1a, out3a, out5a, outpoola, to3a, to5a = 192, 192, 192, 192, 160, 160
-        out1b, out3b, out5b, outpoolb, to3b, to5b = 256, 256, 256, 256, 192, 192
-        out1c, out3c, out5c, outpoolc, to3c, to5c = 256, 256, 256, 256, 192, 192
-        out1d, out3d, out5d, outpoold, to3d, to5d = 256, 256, 256, 256, 192, 192
-        out1e, out3e, out5e, outpoole, to3e, to5e = 256, 256, 256, 256, 192, 192
-        out1f, out3f, out5f, outpoolf, to3f, to5f = 256, 256, 256, 256, 192, 192
+        outfeat1, outfeat2, itm, outfeat3 = 128, 128, 128, 128
+        out11, out31, out51, outpool1, to31, to51 = 64, 64, 64, 64, 96, 96
+        out12, out32, out52, outpool2, to32, to52 = 64, 64, 64, 64, 96, 96
+        out13, out33, out53, outpool3, to33, to53 = 64, 64, 64, 64, 96, 96
+        out14, out34, out54, outpool4, to34, to54 = 96, 96, 96, 96, 128, 128
+        out15, out35, out55, outpool5, to35, to55 = 96, 96, 96, 96, 128, 128
+        out16, out36, out56, outpool6, to36, to56 = 96, 96, 96, 96, 128, 128
+        out17, out37, out57, outpool7, to37, to57 = 96, 96, 96, 96, 128, 128
+        out18, out38, out58, outpool8, to38, to58 = 128, 128, 128, 128, 128, 128
+        out19, out39, out59, outpool9, to39, to59 = 128, 128, 128, 128, 128, 128
+        out10, out30, out50, outpool0, to30, to50 = 128, 128, 128, 128, 128, 128
+        out1a, out3a, out5a, outpoola, to3a, to5a = 128, 128, 128, 128, 128, 128
+        out1b, out3b, out5b, outpoolb, to3b, to5b = 128, 128, 128, 128, 128, 128
+        out1c, out3c, out5c, outpoolc, to3c, to5c = 256, 256, 256, 256, 256, 256
+        out1d, out3d, out5d, outpoold, to3d, to5d = 256, 256, 256, 256, 256, 256
+        out1e, out3e, out5e, outpoole, to3e, to5e = 256, 256, 256, 256, 256, 256
+        out1f, out3f, out5f, outpoolf, to3f, to5f = 256, 256, 256, 256, 256, 256
         
         self.conv1 = nn.Sequential(
             nn.Conv2d(in_channels=3, out_channels=outfeat1, kernel_size=7, stride=2, padding=3),
