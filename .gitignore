@@ -6,6 +6,7 @@ data/
 dl-practice/vision/__pycache__
 dl-practice/vision/wandb
 latest_run/
+/home/sungwoopark/dl-practice/vision/.ipynb_checkpoints
 
 # files 
 *.out
