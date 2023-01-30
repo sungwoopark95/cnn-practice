@@ -141,7 +141,7 @@ if __name__ == "__main__":
     for epoch in range(EPOCHS):
         train(model, train_loader, optimizer)
         test_loss, test_accuracy = evaluate(model, test_loader)
-        print(f"\n[EPOCH: {epoch+1}], \tModel: {model_name}, \tTest Loss: {test_loss:.4f}, \tTest Accuracy: {test_accuracy * 100:.2f}%, ", end='')
+        print(f"\n[EPOCH: {epoch+1}], \tModel: {model_name}, \tTest Loss: {test_loss}, \tTest Accuracy: {test_accuracy * 100:.4f}%, ", end='')
         accs[epoch] = test_accuracy
         losses[epoch] = test_loss
         
@@ -156,7 +156,8 @@ if __name__ == "__main__":
                 torch.save(saved_model, fname)
                 print(f"Model save at epoch {save_epoch}")
         
-        scheduler.step(test_loss)
+        # scheduler.step(test_loss)
+        scheduler.step(test_accuracy)
         print(f"\tLast LR: {scheduler.state_dict()['_last_lr'][-1]} \n")
         
         if cfg.use_wandb:

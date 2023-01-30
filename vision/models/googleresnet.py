@@ -16,21 +16,21 @@ class GoogLeResNet(nn.Module):
             
         self.aux_logits = aux_logits
         
-        outfeat1, outfeat2, itm, outfeat3 = 128, 128, 128, 128
-        out11, out31, out51, outpool1, to31, to51 = 64, 64, 64, 64, 96, 96
-        out12, out32, out52, outpool2, to32, to52 = 64, 64, 64, 64, 96, 96
-        out13, out33, out53, outpool3, to33, to53 = 64, 64, 64, 64, 96, 96
-        out14, out34, out54, outpool4, to34, to54 = 64, 64, 64, 64, 96, 96
-        out15, out35, out55, outpool5, to35, to55 = 96, 96, 96, 96, 128, 128
-        out16, out36, out56, outpool6, to36, to56 = 96, 96, 96, 96, 128, 128
-        out17, out37, out57, outpool7, to37, to57 = 96, 96, 96, 96, 128, 128
-        out18, out38, out58, outpool8, to38, to58 = 96, 96, 96, 96, 128, 128
-        out19, out39, out59, outpool9, to39, to59 = 128, 128, 128, 128, 128, 128
-        out10, out30, out50, outpool0, to30, to50 = 128, 128, 128, 128, 128, 128
-        out1a, out3a, out5a, outpoola, to3a, to5a = 128, 128, 128, 128, 128, 128
-        out1b, out3b, out5b, outpoolb, to3b, to5b = 128, 128, 128, 128, 128, 128
+        outfeat1, outfeat2, itm, outfeat3 = 256, 256, 256, 256
+        out11, out31, out51, outpool1, to31, to51 = 96, 96, 96, 96, 128, 128
+        out12, out32, out52, outpool2, to32, to52 = 96, 96, 96, 96, 128, 128
+        out13, out33, out53, outpool3, to33, to53 = 96, 96, 96, 96, 128, 128
+        out14, out34, out54, outpool4, to34, to54 = 96, 96, 96, 96, 128, 128
+        out15, out35, out55, outpool5, to35, to55 = 128, 128, 128, 128, 128, 128
+        out16, out36, out56, outpool6, to36, to56 = 128, 128, 128, 128, 128, 128
+        out17, out37, out57, outpool7, to37, to57 = 128, 128, 128, 128, 128, 128
+        out18, out38, out58, outpool8, to38, to58 = 128, 128, 128, 128, 128, 128
+        out19, out39, out59, outpool9, to39, to59 = 256, 256, 256, 256, 256, 256
+        out10, out30, out50, outpool0, to30, to50 = 256, 256, 256, 256, 256, 256
+        out1a, out3a, out5a, outpoola, to3a, to5a = 256, 256, 256, 256, 256, 256
+        out1b, out3b, out5b, outpoolb, to3b, to5b = 256, 256, 256, 256, 256, 256
         out1c, out3c, out5c, outpoolc, to3c, to5c = 256, 256, 256, 256, 256, 256
-        out1d, out3d, out5d, outpoold, to3d, to5d = 256, 256, 256, 256, 256, 256
+        out1d, out3d, out5d, outpoold, to3d, to5d = 512, 512, 512, 512, 256, 256
         out1e, out3e, out5e, outpoole, to3e, to5e = 512, 512, 512, 512, 256, 256
         out1f, out3f, out5f, outpoolf, to3f, to5f = 512, 512, 512, 512, 256, 256
         
@@ -44,7 +44,7 @@ class GoogLeResNet(nn.Module):
             nn.BatchNorm2d(outfeat2),
             nn.ReLU()
         )
-        self.res1 = ResBlock(in_channels=outfeat2, intermediate=itm, out_channels=outfeat3)
+        self.res = ResBlock(in_channels=outfeat2, intermediate=itm, out_channels=outfeat3)
         
         self.inception1 = Inception(in_channels=outfeat3, out1x1=out11, to3x3=to31, out3x3=out31, to5x5=to51, out5x5=out51, poolout=outpool1, modified=cfg.google_modified)
         self.inception2 = Inception(in_channels=out11+out31+out51+outpool1, out1x1=out12, to3x3=to32, out3x3=out32, to5x5=to52, out5x5=out52, poolout=outpool2, modified=cfg.google_modified)
@@ -96,7 +96,7 @@ class GoogLeResNet(nn.Module):
         x = self.maxpool1(x)
         
         x = self.conv2(x)
-        x = self.res1(x)
+        x = self.res(x)
         x = self.maxpool2(x)
         
         x = self.inception1(x)
@@ -181,21 +181,49 @@ class Inception(nn.Module):
             # nn.ReLU()
         )
         
-        self.downsample = nn.Sequential(
-            nn.Conv2d(in_channels=in_channels, out_channels=(out1x1+out3x3+out5x5+poolout), kernel_size=1, bias=False),
-            nn.BatchNorm2d(num_features=(out1x1+out3x3+out5x5+poolout), eps=0.001)
+        self.downsample1 = nn.Sequential(
+            nn.Conv2d(in_channels=in_channels, out_channels=out1x1, kernel_size=1, bias=False),
+            nn.BatchNorm2d(num_features=out1x1, eps=0.001)
+        )
+
+        self.downsample2 = nn.Sequential(
+            nn.Conv2d(in_channels=in_channels, out_channels=out3x3, kernel_size=1, bias=False),
+            nn.BatchNorm2d(num_features=out1x1, eps=0.001)
+        )
+
+        self.downsample3 = nn.Sequential(
+            nn.Conv2d(in_channels=in_channels, out_channels=out5x5, kernel_size=1, bias=False),
+            nn.BatchNorm2d(num_features=out1x1, eps=0.001)
+        )
+
+        self.downsample4 = nn.Sequential(
+            nn.Conv2d(in_channels=in_channels, out_channels=poolout, kernel_size=1, bias=False),
+            nn.BatchNorm2d(num_features=out1x1, eps=0.001)
         )
         
     def forward(self, x):
-        branch1 = self.branch1(x)       
-        branch2 = self.branch2(x)
-        branch3 = self.branch3(x)
-        branch4 = self.branch4(x)
-        
-        identity = self.downsample(x)
-        branch_out = torch.cat([branch1, branch2, branch3, branch4], dim=1)
+        branch1 = self.branch1(x)   
+        downsample1 = self.downsample1(x)
+        identity1 = branch1 + downsample1
+        # identity1 = F.relu(branch1+downsample1)
 
-        output = F.relu(branch_out+identity)
+        branch2 = self.branch2(x)
+        downsample2 = self.downsample2(x)
+        identity2 = branch2 + downsample2
+        # identity2 = F.relu(branch2+downsample2)
+        
+        branch3 = self.branch3(x)
+        downsample3 = self.downsample3(x)
+        identity3 = branch3 + downsample3
+        # identity3 = F.relu(branch3+downsample3)
+
+        branch4 = self.branch4(x)
+        downsample4 = self.downsample4(x)
+        identity4 = branch4 + downsample4
+        # identity4 = F.relu(branch4+downsample4)
+        
+        branch_out = torch.cat([identity1, identity2, identity3, identity4], dim=1)
+        output = F.relu(branch_out)
         
         return output
     
