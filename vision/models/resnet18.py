@@ -13,8 +13,6 @@ class ResNet18(nn.Module):
             num_classes = 10
         elif cfg.dataset == "cifar100":
             num_classes = 100
-        # elif cfg.dataset == "imagenet":
-        #     num_classes = 1000
         
         feat1, feat2, feat3, feat4, feat5 = 64, 64, 64, 64, 64
         feat6, feat7, feat8, feat9 = 128, 128, 128, 128

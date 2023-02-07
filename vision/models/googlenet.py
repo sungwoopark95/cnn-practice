@@ -17,8 +17,6 @@ class GoogLeNet(nn.Module):
             num_classes = 10
         elif cfg.dataset == "cifar100":
             num_classes = 100
-        elif cfg.dataset == "imagenet":
-            num_classes = 1000
             
         self.aux_logits = aux_logits
         

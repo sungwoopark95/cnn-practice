@@ -12,8 +12,6 @@ class VGG(nn.Module):
             num_classes = 10
         elif cfg.dataset == "cifar100":
             num_classes = 100
-        elif cfg.dataset == "imagenet":
-            num_classes = 1000
         
         ## from 4 ~ 2048
         feats = [4, 8, 16, 32, 64, 

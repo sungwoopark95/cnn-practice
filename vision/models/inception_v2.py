@@ -15,8 +15,6 @@ class InceptionV2(nn.Module):
             num_classes = 10
         elif cfg.dataset == "cifar100":
             num_classes = 100
-        elif cfg.dataset == "imagenet":
-            num_classes = 1000
         
         conv1out, conv2out, conv3out, conv4out, conv5out = 64, 64, 64, 96, 192
         ch71, out71, out11 = 128, 128, 128

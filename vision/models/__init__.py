@@ -7,6 +7,7 @@ from .inception_v2 import InceptionV2
 from .resnet import ResNet
 from .resnet18 import ResNet18
 from .googleresnet import GoogLeResNet
+from .amoebanet import AmoebaNet
 
 METHOD_DICT = {
     "alexnet": AlexNet,
@@ -18,6 +19,7 @@ METHOD_DICT = {
     "resnet": ResNet,
     "resnet18": ResNet18,
     "googleresnet": GoogLeResNet,
+    "amoebanet": AmoebaNet,
 }
 
 def get_model(name):

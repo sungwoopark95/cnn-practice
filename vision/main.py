@@ -141,7 +141,7 @@ if __name__ == "__main__":
     for epoch in range(EPOCHS):
         train(model, train_loader, optimizer)
         test_loss, test_accuracy = evaluate(model, test_loader)
-        print(f"\n[EPOCH: {epoch+1}], \tModel: {model_name}, \tTest Loss: {test_loss}, \tTest Accuracy: {test_accuracy * 100:.4f}%, ", end='')
+        print(f"\n[EPOCH: {epoch+1}], \tModel: {model_name}, \tTest Loss: {test_loss:6f}, \tTest Accuracy: {test_accuracy * 100:.3f}%, ", end='')
         accs[epoch] = test_accuracy
         losses[epoch] = test_loss
         
