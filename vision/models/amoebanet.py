@@ -22,7 +22,7 @@ class AmoebaNet(nn.Module):
         elif cfg.dataset == "cifar100":
             num_classes = 100
         
-        outfeat1 = 16
+        outfeat1 = 24
         middle1, middle2, middle3, middle4, middle5 = [4 for _ in range(1, 5+1)]
         middle6, middle7, middle8, middle9, middle0 = [4 for _ in range(6, 10+1)]
         out1, out2, out3, out4 = [4 for _ in range(1, 4+1)]
