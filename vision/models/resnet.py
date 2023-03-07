@@ -66,21 +66,23 @@ class ResNet(nn.Module):
         self.res13 = ResBlock(in_channels=feat251, intermediate=feat26, out_channels=feat27, shortcut=cfg.shortcut)
         self.res14 = ResBlock(in_channels=feat27, intermediate=feat28, out_channels=feat29)
         self.res15 = ResBlock(in_channels=feat29, intermediate=feat30, out_channels=feat31)
-        # self.res151 = ResBlock(in_channels=feat31, intermediate=feat301, out_channels=feat311)
+        self.res151 = ResBlock(in_channels=feat31, intermediate=feat301, out_channels=feat311)
         self.pool5 = nn.MaxPool2d(kernel_size=2, stride=2)
         
         self.avgpool = nn.AdaptiveAvgPool2d(output_size=(1, 1))
         
         if cfg.multihead:
             self.fc = nn.Sequential(
-                nn.Linear(feat31, out_features=cfg.head_size1),
+                nn.Linear(feat311, out_features=cfg.head_size1),
                 nn.Dropout(p=cfg.drop_fc),
+                nn.BatchNorm1d(num_features=cfg.head_size1),
+                nn.ReLU(),
                 nn.Linear(cfg.head_size1, out_features=num_classes)
             )
         else:
             self.fc = nn.Sequential(
                 nn.Dropout(p=cfg.drop_fc),
-                nn.Linear(feat31, out_features=num_classes)
+                nn.Linear(feat311, out_features=num_classes)
             )
             
     def forward(self, x):
@@ -111,7 +113,7 @@ class ResNet(nn.Module):
         x = self.res13(x)
         x = self.res14(x)
         x = self.res15(x)
-        # x = self.res151(x)
+        x = self.res151(x)
         x = self.pool5(x)
         
         ## head
@@ -128,10 +130,10 @@ class PlainBlock(nn.Module):
         
         self.block = nn.Sequential(
             nn.Conv2d(in_channels=in_channels, out_channels=intermediate, kernel_size=3, padding='same'),
-            nn.BatchNorm2d(num_features=intermediate),
+            # nn.BatchNorm2d(num_features=intermediate),
             nn.ReLU(),
             nn.Conv2d(in_channels=intermediate, out_channels=out_channels, kernel_size=3, padding='same'),
-            nn.BatchNorm2d(num_features=out_channels),
+            # nn.BatchNorm2d(num_features=out_channels),
             nn.ReLU()
         )
 
@@ -146,15 +148,15 @@ class ResBlock(nn.Module):
         
         self.block = nn.Sequential(
             nn.Conv2d(in_channels=in_channels, out_channels=intermediate, kernel_size=3, padding='same'),
-            nn.BatchNorm2d(num_features=intermediate),
+            # nn.BatchNorm2d(num_features=intermediate),
             nn.ReLU(),
             nn.Conv2d(in_channels=intermediate, out_channels=out_channels, kernel_size=3, padding='same'),
-            nn.BatchNorm2d(num_features=out_channels)
+            # nn.BatchNorm2d(num_features=out_channels)
         )
         
         self.downsample = nn.Sequential(
             nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=1, bias=False),
-            nn.BatchNorm2d(num_features=out_channels)
+            # nn.BatchNorm2d(num_features=out_channels)
         )
         
         self.shortcut = shortcut
