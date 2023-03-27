@@ -77,7 +77,10 @@ def evaluate(model, test_loader):
 
 if __name__ == "__main__":
     cfg = get_cfg()
-    DEVICE = torch.device('cuda') if torch.cuda.is_available else torch.device('cpu')
+    if cfg.cpu:
+        DEVICE = torch.device('cuda') if torch.cuda.is_available else torch.device('cpu')
+    else:
+        DEVICE = torch.device('cuda') if torch.cuda.is_available else torch.device('cpu')
     print(f"Using PyTorch version: {torch.__version__}, Device: {DEVICE}")
     
     if cfg.use_wandb:

@@ -16,9 +16,9 @@ class GoogLeResNet(nn.Module):
             
         self.aux_logits = aux_logits
         
-        outfeat1, outfeat2, itm, outfeat3 = 256, 256, 256, 256
-        out11, out31, out51, outpool1, to31, to51 = 96, 96, 96, 96, 128, 128
-        out12, out32, out52, outpool2, to32, to52 = 96, 96, 96, 96, 128, 128
+        outfeat1, outfeat2, itm, outfeat3 = 128, 128, 128, 128
+        out11, out31, out51, outpool1, to31, to51 = 64, 64, 64, 64, 128, 128
+        out12, out32, out52, outpool2, to32, to52 = 64, 64, 64, 64, 128, 128
         out13, out33, out53, outpool3, to33, to53 = 96, 96, 96, 96, 128, 128
         out14, out34, out54, outpool4, to34, to54 = 96, 96, 96, 96, 128, 128
         out15, out35, out55, outpool5, to35, to55 = 128, 128, 128, 128, 128, 128
@@ -28,8 +28,8 @@ class GoogLeResNet(nn.Module):
         out19, out39, out59, outpool9, to39, to59 = 256, 256, 256, 256, 256, 256
         out10, out30, out50, outpool0, to30, to50 = 256, 256, 256, 256, 256, 256
         out1a, out3a, out5a, outpoola, to3a, to5a = 256, 256, 256, 256, 256, 256
-        out1b, out3b, out5b, outpoolb, to3b, to5b = 256, 256, 256, 256, 256, 256
-        out1c, out3c, out5c, outpoolc, to3c, to5c = 256, 256, 256, 256, 256, 256
+        out1b, out3b, out5b, outpoolb, to3b, to5b = 384, 384, 384, 384, 256, 256
+        out1c, out3c, out5c, outpoolc, to3c, to5c = 384, 384, 384, 384, 256, 256
         out1d, out3d, out5d, outpoold, to3d, to5d = 512, 512, 512, 512, 256, 256
         out1e, out3e, out5e, outpoole, to3e, to5e = 512, 512, 512, 512, 256, 256
         out1f, out3f, out5f, outpoolf, to3f, to5f = 512, 512, 512, 512, 256, 256
